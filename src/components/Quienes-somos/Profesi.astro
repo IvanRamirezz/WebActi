@@ -1,0 +1,208 @@
+---
+interface Professional {
+  name: string;
+  title: string;
+  specialty: string;
+  description: string;
+  image: string;
+  instagram?: string;
+}
+
+const professionals: Professional[] = [
+  {
+    name: "Adrien Vincent Chatillon",
+    title: "Fundador",
+    specialty: "",
+    description: "",
+    image: "/Chatillon.jpeg",
+    // instagram: "#"
+  },
+  {
+    name: "Gabriel Villafuerte Jimenez",
+    title: "Co-fundador",
+    specialty: "",
+    description: "",
+    image: "/Gabo.jpeg",
+    // instagram: "#"
+  }
+];
+---
+
+<div class="bottom-title">
+    <h2>EL <strong>LIDERAZGO</strong> DETRÁS DE ACTIPULSE NEUROSCIENCE</h2>
+  </div>
+
+<section class="professionals-grid">
+  {
+    professionals.map((prof) => (
+      <div class="card">
+        <div class="card-front">
+          <img src={prof.image} alt={prof.name} />
+          <h3>{prof.name}</h3>
+          <p class="title">{prof.title}</p>
+          <p class="specialty">{prof.specialty}</p>
+        </div>
+        <div class="card-back">
+          <h3>{prof.name}</h3>
+          <p class="description">{prof.description}</p>
+          {prof.instagram && (
+            <a href={prof.instagram} class="instagram-link" target="_blank" rel="noopener noreferrer">
+              <img src="/src/assets/social.png" alt="Instagram" width="24" height="24" />
+            </a>
+          )}
+        </div>
+      </div>
+    ))
+  }
+</section>
+
+
+<style>
+  .professionals-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(150px, 250px));
+    gap: 6rem;
+    padding: 3rem;
+    max-width: 700px;
+    margin: 0 auto 2rem;
+    /* margin: 2rem auto; */
+    justify-content: center;
+  }
+
+  .bottom-title {
+    background: white;
+    padding: 1.5rem 2rem;
+    border-radius: 12px;
+    max-width: 800px;
+    margin: 2rem auto;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  .bottom-title h2 {
+    margin: 0;
+    color: #333;
+    font-size: 1.8rem;
+  }
+
+  .card {
+    position: relative;
+    height: 300px;
+    perspective: 1000px;
+    cursor: pointer;
+  }
+
+  .card-front img {
+    width: 150px;
+    height: 150px;
+    border-radius: 40%;
+    object-fit: cover;
+    margin-bottom: 1rem;
+  }
+
+  .card-front,
+  .card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    transition: transform 0.6s;
+    padding: 1.5rem;
+    border-radius: 12px;
+    background: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  .card-front {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+
+  .card-back {
+    transform: rotateY(180deg);
+    overflow-y: auto;
+    padding: 2rem;
+  }
+
+  .card:hover .card-front {
+    transform: rotateY(180deg);
+  }
+
+  .card:hover .card-back {
+    transform: rotateY(0);
+  }
+
+  h3 {
+    color: #333;
+    margin: 0.5rem 0;
+    font-size: 1.2rem;
+  }
+
+  .title,
+  .specialty {
+    color: #666;
+    margin: 0.25rem 0;
+    font-size: 1rem;
+  }
+
+  .description {
+    color: #444;
+    font-size: 0.9rem;
+    line-height: 1.6;
+  }
+
+  .instagram-link {
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
+  }
+
+  /* @media (max-width: 900px) {
+    .professionals-grid {
+      grid-template-columns: minmax(250px, 400px);
+      padding: 1rem;
+    }
+  } */
+  @media (max-width: 768px) {
+    .professionals-grid {
+      grid-template-columns: minmax(150px, 230px);
+      gap: 6rem;
+      padding: 1.5rem;
+    }
+
+    .card {
+      height: 260px;
+    }
+
+    .card-front img {
+      width: 100px;
+      height: 100px;
+    }
+
+    .bottom-title {
+      margin: 1rem;
+      padding: 1rem;
+    }
+
+    .bottom-title h2 {
+      font-size: 1.3rem;
+    }
+  }
+</style>
+
+<script>
+  // Mobile touch handling
+  const cards = document.querySelectorAll('.card');
+  
+  cards.forEach(card => {
+    card.addEventListener('click', () => {
+      if (window.innerWidth <= 768) {
+        cards.forEach(c => c.classList.remove('active'));
+        card.classList.toggle('active');
+      }
+    });
+  });
+</script>

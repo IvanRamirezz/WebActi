@@ -1,0 +1,841 @@
+---
+import Pro2 from '../../assets/Cortos.jpeg';
+import Multi from '../../assets/Multiplataforma.jpeg';
+import FormatoVivo from "../../assets/Vivo.png";
+import Temas from "../../assets/Temas.png";
+import Acceso from "../../assets/Acceso.png";
+import Psiquiatra from "../../assets/Psiquiatra.png";
+import Investigador from "../../assets/Investigador.png";
+import Psicologos from "../../assets/Psicologos.png";
+import Proposito from "../../assets/Proposito.png";
+// import Enfocado from "../../assets/Enfocado.png";
+// import AccesoMul from "../../assets/Acceso-multi.png";
+---
+
+<style>
+ 
+  body {
+      margin: 0;
+      font-family: 'Montserrat', sans-serif;
+      background-color: #f4f4f9;
+  }
+
+  h2 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+  }
+
+  .menu h2{
+    font-size: 1rem;
+    color: #800080;
+    margin-bottom: auto;
+  }
+
+  /* Línea abajo del texto */
+  .line-menu {
+  height: 1px; /* Grosor de la línea */
+  background-color: #c2c2c2; /* Color gris */
+  width: 100%;
+  margin-bottom: 0.5rem;
+  }
+
+    /* Líneas arriba del texto */
+  .line-menus {
+  height: 1px; /* Grosor de la línea */
+  background-color: #c2c2c2; /* Color gris */
+  width: 100%;
+  margin-top: 0.5rem;
+  }
+
+
+  .card h3 {
+    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
+    text-align: left; /* Justifica el texto dentro de las tarjetas */
+  }
+
+  .card p {
+    font-size: 1rem;
+    color: #555;
+    text-align: left; /* Justifica el texto dentro de las tarjetas */
+  }
+
+  .tema-card p{
+    font-size: 1rem;
+    color: #555;
+    text-align: left; /* Justifica el texto dentro de las tarjetas */
+  }
+
+  .container {
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+      display: flex;
+      max-width: 1100px;
+      margin: auto;
+      padding: 20px;
+  }
+
+  
+  .contenido {
+      flex-grow: 1;
+      max-width: 800px; /* Reduce el tamaño de la sección de contenido */
+      flex-direction: column;
+      gap: 20px;
+      display: flex;
+  }
+
+  
+  .menu {
+      position: sticky;
+      top: 20px;
+      height: auto;
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+  }
+  
+  .menu ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+  }
+  
+  .menu li {
+      display: flex;
+      align-items: center;
+      padding: 10px;
+      cursor: pointer;
+  }
+  
+  .menu li span {
+      margin-right: 10px;
+  }
+  
+  .inscribirme {
+      width: 100%;
+      background: #9e8adc;
+      border: none;
+      padding: 10px;
+      color: white;
+      font-weight: bold;
+      border-radius: 5px;
+      cursor: pointer;
+  }
+
+  #seccion-webinar, #seccion-temas {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  
+  .tarjetas {
+      display: flex;
+      gap: 20px;
+  }
+  
+  .card {
+      width: 30%;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+      padding: 15px;
+      text-align: center;
+  }
+  
+  .card img {
+      width: 100%;
+      border-radius: 10px;
+  }
+
+  .card h3{
+    font-size: 20px;
+
+  }
+
+  .temas {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+  }
+  
+  .tema-card {
+      background: white;
+      padding: 15px;
+      border-radius: 10px;
+      box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+      /* font-weight: bold; */
+      display: flex;
+      align-items: center;
+  }
+  
+  .tema-card span {
+      background: #9e8adc;
+      color: white;
+      padding: 5px 10px;
+      margin-right: 10px;
+      border-radius: 5px;
+  }
+
+.material-symbols-outlined {
+  font-size: 18px; /*Tamaño más grande*/
+  color: #800080; /* Morado oscuro */
+  vertical-align: middle; /* Alinear con el texto */
+  padding-right: 10px;
+}
+
+/* Líneas arriba y abajo del texto */
+.line {
+  height: 1px; /* Grosor de la línea */
+  background-color: #c2c2c2; /* Color gris */
+  width: 100%;
+  margin-bottom: 1.5rem;
+  }
+
+    .menu {
+      position: sticky;
+      top: 12%; /* Mantiene una separación de 20px desde la parte superior */
+      height: fit-content; /* Ajusta la altura al contenido */
+      width: 250px;
+      background: #ebe5f7;
+      padding: 20px;
+      border-radius: 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      align-self: flex-start; /*Ajusta la altura según el contenido*/
+  }
+  
+  
+    .menu a {
+      text-decoration: none;
+      color: #333;
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px;
+      border-radius: 8px;
+      transition: background 0.3s;
+    }
+  
+    .menu a:hover {
+      background: #d1c4e9;
+    }
+  
+    .menu button {
+      background: #8e44ad;
+      color: white;
+      border: none;
+      padding: 10px;
+      text-align: center;
+      border-radius: 8px;
+      cursor: pointer;
+      margin: 10px auto 0 auto; /* Centra el botón horizontalmente */
+      width: 60%;
+      display: block; /* Asegura que respete el margen auto */
+      transition: all 0.3s ease;
+  }
+  
+  .menu button:hover {
+      background: white;
+      color: #8e44ad;
+  }
+  
+  .seccion-temas{
+    background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+
+  }
+  .seccion-temas h2{
+    font-size: 1.1rem;
+  }
+
+
+  @media (max-width: 768px) {
+    .cointaner {
+        flex-direction: column;
+        align-items: center;
+        /* width: 90%; */
+        padding: 10px;
+    }
+
+    .menu {
+        /* width: 90%;
+        text-align: center; */
+        display: none;
+    }
+    .contenido {
+        max-width: 100%;
+        padding: 10px;
+    }
+        .card {
+        width: 100%;
+    }
+    .tarjetas {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap; 
+      justify-content: center;
+  }
+
+}
+</style>
+
+<style>
+  /* Estilos generales */
+#ponentes {
+  max-width: 900px;
+  margin: auto;
+  text-align: center;
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+}
+#ponentes p {
+  display: flex;
+  align-items: center; /* Alinea verticalmente el icono y el texto */
+  justify-content: flex-start; /* Alinea el contenido a la izquierda */
+  font-size: 1rem;
+  color: #333;
+}
+
+.line {
+  width: 50px;
+  height: 3px;
+  background-color: #aaa;
+  margin: 10px auto;
+}
+
+.ponentes-container {
+  padding: 15px; /* Espaciado interno */
+  margin-top: 15px; /* Espaciado con la parte superior */
+}
+
+.ponente-card {
+  display: flex;
+  align-items: center;
+  background: white;
+  border-radius: 10px;
+  border: 2px solid #d4c3ff;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  padding: 15px; /* Espaciado interno */
+  margin-bottom: 15px; /* Espacio entre tarjetas */
+}
+
+.ponente-card img {
+  width: 180px; /*Aumenta el tamaño de la imagen de forma horizontal -ancho-  */
+  height: 80px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-right: 15px; /* Espacio entre la imagen y el texto */
+}
+
+.ponente-info {
+  text-align: left;
+}
+
+.ponente-info h3 {
+  text-align: left;
+  font-size: 1rem;
+  color: #333;
+}
+
+.ponente-info p {
+  font-size: 0.9rem;
+  color: #666;
+}
+
+/* Responsividad */
+@media (max-width: 600px) {
+  .ponente-card {
+    flex-direction: column;
+    text-align: center;
+    padding: 10px;
+  }
+
+  .ponente-card img {
+    width: 100%;
+    height: auto;
+    margin: 0 0 10px 0; /* Espaciado abajo en móvil */
+  }
+
+  .ponente-info {
+    text-align: center;
+  }
+}
+
+</style>
+
+
+<style>
+  /* CONTENEDOR PRINCIPAL */
+#interaccion {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  max-width: 900px;
+  margin: auto;
+}
+
+.interaccion-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Justificar contenido a la izquierda */
+}
+
+.texto {
+  text-align: left;
+}
+
+/* TÍTULO */
+.icon-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: bold;
+  color: #555;
+}
+
+/* ✅ IMAGEN A LA IZQUIERDA EN ESCRITORIO */
+.contenido {
+  display: flex;
+  flex-direction: row; /* ✅ Imagen a la izquierda en pantallas grandes */
+  align-items: center;
+  justify-content: flex-start;
+  gap: 20px;
+  margin-top: 10px;
+  width: 100%;
+}
+
+.contenido img {
+  width: 40%; /* ✅ Imagen ocupa el 40% del contenedor */
+  max-width: 300px; /* No más grande de 300px */
+  border-radius: 8px;
+  height: auto;
+  flex-shrink: 0; /* Evita que la imagen se reduzca demasiado */
+}
+
+/* ✅ LISTA */
+.contenido ul {
+  list-style: none;
+  padding: 0;
+  text-align: left;
+  flex: 1; /* Hace que la lista ocupe el resto del espacio */
+}
+
+.contenido li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.contenido li span {
+  color: #7a42f4;
+}
+
+/* MENSAJE FINAL */
+.mensaje-final {
+  font-weight: bold;
+  text-transform: uppercase;
+  margin-top: 20px;
+  color: #444;
+}
+
+/* ✅ EN MÓVILES, LA IMAGEN VA ARRIBA */
+@media (max-width: 768px) {
+  .contenido {
+    flex-direction: column; /* ✅ Imagen arriba en móviles */
+    align-items: center;
+    text-align: center;
+  }
+
+  .contenido img {
+    width: 100%;
+    max-width: 250px; /* Imagen más pequeña en móviles */
+  }
+
+  .contenido ul {
+    text-align: center;
+  }
+
+  .contenido li {
+    justify-content: center;
+  }
+}
+
+</style>
+
+<!-- Css de Seccion Metodologia -->
+<style>
+  #metodologia {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    max-width: 900px;
+    margin: auto;
+  }
+  
+  .icon-title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: bold;
+    color: #555;
+  }
+  
+  .descripcion {
+    color: #666;
+    margin-bottom: 20px;
+  }
+  
+  .metodologia-content {
+    display: flex;
+    gap: 20px;
+  }
+  
+  .item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    background: #f9f9f9;
+    padding: 10px;
+    border-radius: 8px;
+    flex: 1;
+  }
+  
+  .item img {
+    width: 60px;
+    height: 60px;
+    border-radius: 8px;
+  }
+  
+  .info h3 {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 16px;
+    color: #333;
+  }
+  
+  .info p {
+    color: #666;
+    font-size: 14px;
+  }
+  
+  /* Adaptación a móviles */
+  @media (max-width: 768px) {
+    .metodologia-content {
+      flex-direction: column;
+    }
+    
+    .item {
+      flex-direction: column;
+      text-align: center;
+    }
+    
+    .item img {
+      width: 80px;
+      height: 80px;
+    }
+  }
+</style>
+
+
+<!-- CSS FAQ -->
+<style>
+  #faq {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    max-width: 760px;
+    margin: auto;
+    width: 100%; /* Ocupará el 90% del ancho de la pantalla */
+  }
+  .faq-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: bold;
+    color: #555;
+    margin-bottom: 20px;
+  }
+  .faq-item {
+    border-bottom: 1px solid #ddd;
+  }
+  .faq-question {
+    width: 100%;
+    background: none;
+    border: none;
+    text-align: left;
+    padding: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .faq-question:after {
+    content: '+';
+    font-size: 18px;
+  }
+  .faq-item.active .faq-question:after {
+    content: '-';
+  }
+  .faq-answer {
+    display: none;
+    padding: 0 15px 15px;
+    color: #333;
+  }
+  .faq-item.open .faq-answer {
+    display: block;
+  }
+    /* Adaptación a móviles */
+    @media (max-width: 900px) {
+
+    #faq{
+      width: 87%;
+    }
+
+  }
+</style>
+
+<style>
+
+
+  .faq-item {
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    overflow: hidden;
+    margin-bottom: 10px;
+  }
+
+  .faq-question {
+    background: #f7f7f7;
+    padding: 15px;
+    width: 100%;
+    text-align: left;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+  }
+
+  .faq-answer {
+    display: none;
+    padding: 10px;
+    background: white;
+  }
+</style>
+
+<div class="container">
+        <!-- Menú lateral -->
+    <nav class="menu">
+      <h2>MENÚ</h2>
+      <div class="line-menu"></div> <!-- Línea superior -->
+      <a href="#seccion-webinar"><i class="fa-solid fa-circle-info"></i> Sobre el Curso</a>
+      <a href="#seccion-temas"><i class="fa-solid fa-book"></i> Temas Generales</a>
+      <a href="#ponentes"><i class="fa-solid fa-microphone"></i> Ponentes Invitados</a>
+      <a href="#interaccion"><i class="fa-solid fa-bullseye"></i> Propósito</a>
+      <a href="#metodologia"><i class="fa-solid fa-graduation-cap"></i> Metodología</a>
+      <a href="#faq"><i class="fa-solid fa-question-circle"></i> Preguntas Frecuentes</a>    
+      <div class="line-menus"></div> <!-- Línea superior -->
+      <button>INSCRIBIRME</button>
+    </nav>
+
+
+      <!-- Seccion de webinars -->
+      <section class="contenido">
+      <div id="seccion-webinar">
+          <h2>¿Qué hace especiales a nuestros Webinars?</h2>
+          <div class="line"></div> <!-- Línea superior -->
+          <div class="tarjetas">
+              <div class="card">
+                  <img src={FormatoVivo.src} alt="Formato en vivo" class="card-img">
+                  <h3><span class="material-symbols-outlined">podcasts</span>Formato en vivo</h3>
+                  <div class="line"></div> <!-- Línea superior -->
+                  <p>Que fomenta el diálogo, la interacción y el desarrollo de vínculos estratégicos.</p>
+              </div>
+              <div class="card">
+                  <img src={Temas.src} alt="Temas relevantes" class="card-img">
+                  <h3><span class="material-symbols-outlined">menu_book</span>Temas relevantes y actualizados</h3>
+                  <div class="line"></div> <!-- Línea superior -->
+                  <p>Especialmente diseñados para profesionales de la salud mental.</p>
+              </div>
+              <div class="card">
+                  <img src={Acceso.src} alt="Acceso desde cualquier lugar" class="card-img">
+                  <h3><span class="material-symbols-outlined">language</span>Acceso desde cualquier lugar</h3>
+                  <div class="line"></div> <!-- Línea superior -->
+                  <p>Para que no te pierdas contenido valioso y oportunidades de conexión.</p>
+              </div>
+          </div>
+      </div>
+
+
+        <!-- Seccion de temas  -->
+      <div id="seccion-temas">
+        <p><span class="material-symbols-outlined">menu_book</span>TEMAS GENERALES</p>
+        <div class="line"></div> <!-- Línea superior -->
+        <div class="temas">
+            <div class="tema-card"><span>01</span> <p>Aplicaciones clínicas del TMS en ansiedad, depresión y trastornos neurodegenerativos.</p></div>
+            <div class="tema-card"><span>02</span> <p>Impacto de la neuromodulación en el tratamiento de trastornos del neurodesarrollo.</p></div>
+            <div class="tema-card"><span>03</span> <p>Innovaciones en neurociencia y cómo afectan las prácticas médicas actuales.</p></div>
+        </div>
+      </div>
+
+<!-- Sección Ponentes -->
+<section id="ponentes">
+  <p><span class="material-symbols-outlined">mic</span>PONENTES INVITADOS</p>
+  <div class="line"></div> <!-- Línea superior -->
+
+  <h2>Contamos con expertos reconocidos en diversas áreas de la salud</h2>
+  <!-- <p class="subtitulo">INCLUYENDO</p> -->
+
+  <div class="ponentes-container">
+    <div class="ponente-card">
+      <img src={Psicologos.src} alt="Psicólogos clínicos">
+      <div class="ponente-info">
+        <h3>Psicólogos clínicos y paidopsicólogos:</h3>
+        <p>Enfocados en el tratamiento de pacientes pediátricos y adolescentes.</p>
+      </div>
+    </div>
+
+    <div class="ponente-card">
+      <img src={Psiquiatra.src} alt="Psiquiatras">
+      <div class="ponente-info">
+        <h3>Psiquiatras:</h3>
+        <p>Especialistas en salud mental con experiencia en TMS y otras técnicas avanzadas.</p>
+      </div>
+    </div>
+
+    <div class="ponente-card">
+      <img src={Investigador.src} alt="Investigadores de Actipulse">
+      <div class="ponente-info">
+        <h3>Investigadores de Actipulse:</h3>
+        <p>Líderes en neuromodulación que comparten las últimas investigaciones y avances científicos.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Seccion de Interaccion-->
+
+<section id="interaccion">
+  <div class="interaccion-container">
+    <div class="texto">
+      <div class="icon-title">
+        <span class="material-symbols-outlined">psychology</span> 
+        <p>PROPÓSITO</p>
+      </div>
+
+      <h2>Interacción y Resolución de Dudas</h2>
+      <p class="descripcion">
+        Uno de los pilares de nuestros webinars es el espacio dedicado a la interacción. Al participar, podrás:
+      </p>
+    </div>
+
+    <div class="contenido">
+      <img src={Proposito.src} alt="Persona levantando la mano en un webinar">
+      <ul>
+        <li><span class="material-symbols-outlined">chat</span> Plantear preguntas en tiempo real.</li>
+        <li><span class="material-symbols-outlined">forum</span> Resolver dudas directamente con los ponentes.</li>
+        <li><span class="material-symbols-outlined">groups</span> Compartir experiencias y casos clínicos con otros profesionales.</li>
+      </ul>
+    </div>
+
+    <p class="mensaje-final">
+      FOMENTAMOS UN AMBIENTE DONDE EL APRENDIZAJE FLUYE A TRAVÉS DEL DIÁLOGO.
+    </p>
+  </div>
+</section>
+
+<!-- Seccion de metodologia -->
+<section id="metodologia">
+  <div class="metodologia-container">
+    <div class="icon-title">
+      <span class="material-symbols-outlined">school</span>
+      <p>METODOLOGÍA</p>
+    </div>
+    
+    <h2>Formato y Flexibilidad</h2>
+    <p class="descripcion">
+      Entendemos la importancia de adaptar el aprendizaje a tu rutina, por eso nuestros webinars
+      son gratuitos y están diseñados para ser:
+    </p>
+    
+    <div class="metodologia-content">
+      <div class="item">
+        <img src={Multi.src} alt="Lupa sobre un documento">
+        <div class="info">
+          <h3><span class="material-symbols-outlined">check_circle</span> CORTOS Y ENFOCADOS</h3>
+          <p>Sesiones de 1 a 2 horas.</p>
+        </div>
+      </div>
+      
+      <div class="item">
+        <img src={Pro2.src} alt="Persona usando una tablet">
+        <div class="info">
+          <h3><span class="material-symbols-outlined">devices</span> ACCESO MULTIPLATAFORMA</h3>
+          <p>Asiste desde tu computadora, tablet o smartphone.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Seccion FAQ -->
+<section id="faq">
+  <h2>Preguntas Frecuentes</h2>
+  <div class="faq-item">
+    <button class="faq-question">¿Los webinars requieren inscripción?</button>
+    <div class="faq-answer">Sí, los webinars requieren inscripción previa. Para mantenerte informado sobre próximas sesiones, puedes seguirnos en nuestras redes sociales, contactarnos directamente o suscribirte a nuestro newsletter.</div>
+  </div>
+  <div class="faq-item">
+    <button class="faq-question">¿Los webinars son gratuitos?</button>
+    <div class="faq-answer">Sí, los webinars son gratuitos y representan una oportunidad para conectar con profesionales de la salud. Sin embargo, es necesario registrarse previamente para obtener acceso a cada sesión.</div>
+  </div>
+  <div class="faq-item">
+    <button class="faq-question">¿Cómo me conecto al webinar?</button>
+    <div class="faq-answer">Una vez que completado tu registro, te enviaremos por correo electrónico el enlace de acceso junto con un recordatorio para que puedas agendarlo y te unas en el momento correcto.</div>
+  </div>
+</section>
+
+  </div>
+  </section>
+</div>
+
+<!-- Script para manejar el FAQ -->
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    const faqItems = document.querySelectorAll(".faq-item");
+
+    faqItems.forEach((item) => {
+        const question = item.querySelector(".faq-question");
+
+        if (question) { // Verifica que el botón existe antes de agregar el event listener
+            question.addEventListener("click", function() {
+                faqItems.forEach((otherItem) => {
+                    if (otherItem !== item) {
+                        otherItem.classList.remove("open");
+                    }
+                });
+
+                item.classList.toggle("open");
+            });
+        }
+    });
+});
+</script>

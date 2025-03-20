@@ -1,0 +1,131 @@
+---
+const topics = [
+  { 
+    name: "Depresión", 
+    description: "Tratamiento del trastorno depresivo mayor.",
+    link: "/PDFS/ACTIPULSE-DEPRESION.pdf"
+  },
+  { 
+    name: "Demencia Vascular", 
+    description: "Rehabilitación de la demencia vascular.",
+    link: "/PDFS/ACTIPULSE-DEMENCIA-VASCULAR-CEREBRAL.pdf"
+  },
+  { 
+    name: "Alzheimer", 
+    description: "Uso de EMT gamma rápida para el Alzheimer leve.",
+    link: "/PDFS/ACTIPULSE-ALZHEIMER.pdf"
+  },
+  { 
+    name: "Tabaquismo", 
+    description: "Eficacia de la EMT en el abandono de tabaco.",
+    link: "/PDFS/ACTIPULSE-TABAQUISMO.pdf"
+  },
+  { 
+    name: "Insomnio", 
+    description: "EMT: calidad de sueño, memoria y estado de ánimo de los adultos jóvenes.",
+    link: "/PDFS/ACTIPULSE-INSOMNIO.pdf"
+  }
+];
+---
+
+<style>
+.container {
+  display: grid;
+  /* gap: 15px; */
+  padding: 20px;
+  justify-content: center;
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* En escritorio: 3 arriba, 2 abajo centrados */
+@media (min-width: 768px) {
+  .container {
+    grid-template-columns: repeat(3, 1fr);
+    
+  }
+  .bottom-container {
+    grid-column: 1 / -1;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+  }
+}
+
+/* En móvil: Centrar todas las tarjetas con el mismo margen */
+@media (max-width: 767px) {
+  .container, .bottom-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    /* gap: 15px; */
+    padding: 0px;
+  }
+}
+
+.card {
+  background-color: transparent;
+  color: black;
+  padding: 15px;
+  border-radius: 8px;
+  text-align: left;
+  border: 2px solid black;
+  transition: transform 0.3s ease-in-out;
+  width: 100%;
+  max-width: 250px;
+  margin-bottom: 15px; /* Previene el colapso de márgenes */
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
+
+h2 {
+  font-size: 18px;
+}
+
+p {
+  font-size: 14px;
+}
+
+.button {
+  display: inline-block;
+  margin-top: 8px;
+  padding: 8px 12px;
+  background-color: black;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  text-align: center;
+  font-weight: bold;
+  text-decoration: none;
+  font-size: 14px;
+  transition: background 0.3s ease-in-out;
+}
+
+.button:hover {
+  background-color: #333;
+}
+</style>
+
+<div class="container">
+  {topics.slice(0, 3).map((topic) => (
+    <div class="card">
+      <h2>{topic.name}</h2>
+      <p>{topic.description}</p>
+      <a href={topic.link} target="_blank" class="button">Leer artículo</a>
+    </div>
+  ))}
+</div>
+
+<div class="bottom-container">
+  {topics.slice(3, 5).map((topic) => (
+    <div class="card">
+      <h2>{topic.name}</h2>
+      <p>{topic.description}</p>
+      <a href={topic.link} target="_blank" class="button">Leer artículo</a>
+    </div>
+  ))}
+</div>

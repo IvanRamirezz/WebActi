@@ -1,0 +1,33 @@
+---
+import Navbar from '../components/Header.astro';
+import Layout from "../layouts/Layout.astro"
+import Footer from "../components/Footer.astro";
+import Webinar from "../components/Webinars/Webinar.astro";
+import Titulo from "../components/Titulo.astro";
+import Info from "../components/Info.astro";
+import Menuweb from "../components/Webinars/Menu-Webinar.astro";
+import Eventos from "../components/Webinars/Eventos.astro";
+---
+
+<html lang="en">
+<head>
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
+	<meta charset="UTF-8">
+	<link rel="icon" type="image/svg+xml">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="generator" content= {Astro.generator}/>
+	<title>Webinars</title>
+</head>
+<body>
+	<Navbar/>
+	<Layout/>
+    <Webinar/>
+	<Titulo/>
+	<Info/>
+	<Menuweb/>
+	<Eventos/>
+	<Footer/>
+</body>
+</html>

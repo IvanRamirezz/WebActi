@@ -1,0 +1,159 @@
+---
+import Medico from '../assets/Medico-dispositivo.png';
+import Ergonomico from '../assets/ergonomico.jpeg';
+---
+
+<!-- Sección de acordeón -->
+<style>
+    details summary {
+    font-weight: normal;
+    font-size: 17px;
+    padding: 2px;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    max-width: 900px;
+    margin: auto;
+    flex-direction: row; /* Asegura que los elementos estén en fila por defecto */
+}
+
+.text-section {
+    flex: 1;
+}
+
+.accordion {
+    max-width: 90%;
+}
+
+details p {
+    text-align: justify;
+}
+
+details {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    padding: 10px;
+    background: #6c6a6a37;
+}
+
+summary {
+    font-weight: bold;
+    cursor: pointer;
+}
+
+details[open] {
+    background: transparent;
+}
+
+.image-section {
+    flex: 1;
+    text-align: center;
+}
+
+.image-section img {
+    max-width: 80%;
+    border-radius: 10px;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    padding-right: 28%;
+}
+
+/* Ajustes para pantallas más pequeñas */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column; /* Cambia la dirección a columna para pantallas pequeñas */
+        padding: 10px; /* Añade algo de espacio alrededor */
+    }
+
+    .image-section {
+        margin-bottom: 20px;
+    }
+
+    .accordion {
+        max-width: 80%; /* Hace que el acordeón ocupe el 100% del ancho disponible */
+        margin: 0 auto; /* Centra el acordeón */
+    }
+
+    h2 {
+        font-size: 22px; /* Reduce el tamaño del título en pantallas pequeñas */
+        padding: 2%; /* Elimina el espacio extra a la derecha */
+    }
+}
+</style>
+
+<!-- Título principal -->
+<h2>Beneficios que transforman la experiencia clínica</h2>
+
+<!-- Contenedor que incluye el acordeón y la imagen -->
+<div class="container">
+    <!-- Sección de texto (acordeón) -->
+    <div class="text-section">
+        <div class="accordion">
+            <!-- Detalles del acordeón: cada "details" es una sección con un "summary" y un contenido adicional -->
+            <details id="details1" open>
+                <summary>Diseño ergonómico</summary>
+                <p>Dispositivo portátil, ligero y fácil de transportar. 
+                    Incluye un gorro de estimulación que facilita la ubicación 
+                    precisa de áreas para TMS y una bobina con mango ergonómico 
+                    y velcro para asegurarla, optimizando comodidad y eficiencia en tratamientos.
+                </p>
+            </details>
+            <details id="details2">
+                <summary>Tecnología avanzada</summary>
+                <p>El sistema operativo del Pro 2 permite personalizar protocolos,
+                    adaptando las sesiones a cada paciente. Su navegación offline facilita su uso
+                    en cualquier ubicación sin conexión WIFI, mientras guarda datos de pacientes para
+                    dar continuidad en futuras reuniones.
+                </p>
+            </details>
+            <details id="details3">
+                <summary>Eficiencia clínica</summary>
+                <p>El sistema operativo del Pro 2 destaca por su flexibilidad, permitiendo
+                    la personalización de protocolos además de los predeterminados. Su funcionalidad
+                    offline facilita la terapia y asegura el registro de pacientes para un seguimiento
+                    eficiente.
+                </p>
+            </details>
+            <details id="details4">
+                <summary>Sistema intuitivo</summary>
+                <p>Diseñado para la práctica clínica, el dispositivo permite acceder rápidamente a protocolos y ajustarlos según las necesidades del paciente, garantizando un uso eficiente y sin complicaciones.</p>
+            </details>
+        </div>
+    </div>
+
+    <!-- Sección de la imagen -->
+    <div class="image-section">
+        <!-- Imagen dentro de la sección de imagen -->
+        <img src={Ergonomico.src} alt="Diseño Ergonomico">
+    </div>
+</div>
+
+<script>
+    // Lista de imágenes asociadas a cada id de acordeón
+    const images = {
+        details1: '/ergonomico.jpeg',   // Imagen para el primer acordeón
+        details2: '/base.jpeg',  // Imagen para el segundo acordeón
+        details3: '/clinico.jpeg',  // Imagen para el tercer acordeón
+        details4: '/intiutivo.png'   // Imagen para el cuarto acordeón
+    };
+
+    document.querySelectorAll('details').forEach((detail) => {
+    const detailId = detail.id;
+
+    detail.addEventListener('click', () => {
+        // Selecciona la imagen y la convierte explícitamente en HTMLImageElement
+        const imageElement = document.querySelector('.image-section img') as HTMLImageElement | null;
+
+        if (imageElement && images[detailId]) {
+            imageElement.src = images[detailId];
+        }
+    });
+});
+
+</script>

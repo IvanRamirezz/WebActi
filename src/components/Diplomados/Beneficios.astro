@@ -1,0 +1,183 @@
+---
+import Medico from '../../assets/Persona.jpeg';
+import Diploma from '../../assets/Diploma.png'
+---
+<style>
+    .benefits-section {
+      width: 80vw;
+      margin: 0 auto;
+      padding: 2rem;
+      /* background: white; */
+    }
+  
+    .certification-banner {
+      position: relative;
+      width: 100%;
+      height: 250px;
+      overflow: hidden;
+    }
+  
+    .banner-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+  
+    .certification-text {
+      position: absolute;
+      top: 50%;
+      right: 5%;
+      transform: translateY(-50%);
+      background: rgba(0, 0, 0, 0.6);
+      color: white;
+      padding: 1rem;
+      border-radius: 8px;
+      text-align: left;
+      max-width: 40%;
+    }
+  
+    .benefits-container {
+      margin-top: 2rem;
+    }
+  
+    .benefits-content {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      align-items: center;
+      gap: 1rem;
+    }
+  
+    .benefits-info {
+      text-align: center;
+    }
+  
+    .benefits-info h2 {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      font-size: 1.5rem;
+      /* font-weight: bold; */
+      margin-bottom: 1rem;
+    }
+  
+    .benefits-info .material-icons {
+      font-size: 2rem;
+      color: #ff9800;
+    }
+  
+    .benefits-image img {
+      width: 100%;
+      max-width: 300px;
+      border-radius: 8px;
+      display: block;
+      margin: 0 auto;
+    }
+  
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.5rem;
+    }
+  
+    .benefit-item {
+      background: #f8f8f8;
+      padding: 1rem;
+      border-radius: 8px;
+      text-align: left;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  
+    .benefit-item .material-icons {
+      font-size: 2rem;
+      color: #673ab7;
+      margin-bottom: 0.5rem;
+    }
+  
+  
+    @media (max-width: 768px) {
+      .certification-banner {
+        height: 200px;
+      }
+  
+      .certification-text {
+        max-width: 70%;
+        font-size: 0.8rem;
+        padding: 0.8rem;
+      }
+      
+      .benefits-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+  
+      .benefits-image img {
+        max-width: 100%;
+        margin: 0 auto;
+      }
+  
+      .benefits-grid {
+        grid-template-columns: 1fr;
+      }
+  
+      .benefit-item {
+        align-items: center;
+        text-align: left;
+      }
+      /* .benefits-info h2{
+        text-align: left;
+      } */
+
+    }
+  </style>
+
+
+<section class="benefits-section">
+    <div class="certification-banner">
+      <img src={Diploma.src} alt="Certificación" class="banner-image">
+      <div class="certification-text">
+        <h3>TÍTULO</h3>
+        <p>Al finalizar el programa, los participantes obtendrán un diploma que valida su formación:</p>
+        <strong>Certificación avalada por la SEP</strong>
+      </div>
+    </div>
+    
+    <div class="benefits-container">
+      <div class="benefits-content">
+        <div class="benefits-info">
+            <!-- <span class="material-icons">star</span> -->
+          <h2>Beneficios del programa</h2>
+          <div class="benefits-image">
+            <img src={Medico.src} alt="Beneficios del programa">
+          </div>
+        </div>
+        <div class="benefits-grid">
+          <div class="benefit-item">
+            <span class="material-icons">schedule</span>
+            <h3>Flexibilidad</h3>
+            <p>Aprende desde cualquier lugar y organiza tu tiempo según tus necesidades.</p>
+          </div>
+          <div class="benefit-item">
+            <span class="material-icons">menu_book</span>
+            <h3>Contenido actualizado</h3>
+            <p>Basado en evidencia científica y adaptado a los avances más recientes.</p>
+          </div>
+          <div class="benefit-item">
+            <span class="material-icons">groups</span>
+            <h3>Red de contacto</h3>
+            <p>Conecta con profesionales del sector y amplía tus oportunidades de colaboración.</p>
+          </div>
+          <div class="benefit-item">
+            <span class="material-icons">favorite</span>
+            <h3>Impacto en la salud mental</h3>
+            <p>Al finalizar el diplomado, estarás capacitado para aplicar tratamientos innovadores.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+</section>
+  
+

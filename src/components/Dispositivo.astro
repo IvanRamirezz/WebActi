@@ -1,0 +1,154 @@
+---
+import Popup from '../components/Popup.astro';
+---
+
+<!-- Estilos para la sección de presentación del producto -->
+<style>
+    /* Contenedor principal de la sección */
+    .product-showcase {
+        position: relative; /* Permite posicionar el video de forma absoluta */
+        display: flex; /* Usa flexbox para organizar los elementos */
+        align-items: center; /* Alinea verticalmente el contenido */
+        justify-content: center; /* Centra los elementos horizontalmente */
+        padding: 350px 40px 40px; /* Aumenta la separación con la parte superior */
+        padding-top: 30%;
+        overflow: hidden; /* Evita que el video sobresalga */
+    }
+    
+    .product-video {
+    position: absolute; /* Cambia de fixed a absolute */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%; /* Asegura que cubra toda la sección */
+    object-fit: cover;
+    z-index: -1;
+    transition: transform 0.1s linear;
+}
+
+
+    /* Estilos para el contenedor del contenido textual */
+    .content {
+        position: relative; /* Permite que el fondo difuminado esté detrás del texto */
+        max-width: 100%; /* Limita el ancho del contenido */
+        text-align: left; /* Alinea el texto a la izquierda */
+        z-index: 1; /* Asegura que el texto esté por encima del video */
+        padding-top: 2%;
+        padding-right: 25%;
+    }
+
+    /* Fondo difuminado para el texto */
+    .content p, .content .descripcion {
+        background: rgba(255, 255, 255, 0.5); /* Fondo blanco semitransparente */
+        padding: 15px; /* Agrega relleno alrededor del texto */
+        border-radius: 10px; /* Redondea las esquinas */
+        backdrop-filter: blur(5px); /* Aplica un difuminado detrás del fondo */
+    }
+    
+    /* Estilos para el título */
+    .content h1 {
+        font-size: 2rem; /* Tamaño de la fuente */
+        color: #000; /* Color del texto */
+    }
+
+    /* Estilos para el párrafo */
+    .content .animate__animated {
+        font-size: 1.4rem; /* Tamaño de la fuente */
+        color: #333; /* Color del texto */
+    }
+
+    .content .descripcion {
+        font-size: 2rem; /* Tamaño de la fuente */
+        color: #333; /* Color del texto */
+    }
+    
+    /* Estilos para el botón de llamada a la acción */
+    .cta-button {
+        display: inline-block; /* Hace que el botón respete su contenido */
+        padding: 10px 20px; /* Añade relleno al botón */
+        /* border: 2px solid #840eeb; Define el borde con color azul
+        color: #840eeb; Color del texto */
+        background: linear-gradient(90deg, #613b91, #714ebf);
+        box-shadow: 0 0 10px rgba(129, 88, 191, 0.6);
+        text-decoration: none; /* Elimina el subrayado del enlace */
+        font-weight: bold; /* Hace que el texto sea negrita */
+        border-radius: 5px; /* Redondea las esquinas del botón */
+        transition: background 0.3s; /* Agrega una transición suave al fondo */
+    }
+    
+    /* Cambio de color cuando el botón es pasado por encima */
+    .cta-button:hover {
+        /* background: #840eeb; Cambia el fondo a azul */
+        background: linear-gradient(90deg, #613b91, #714ebf);
+        box-shadow: 0 0 10px rgba(129, 88, 191, 0.6);
+        color: white; /* Cambia el color del texto a blanco */
+    }
+    
+    /* Ajustes para pantallas más pequeñas */
+    @media (max-width: 768px) {
+        .product-showcase {
+            flex-direction: column;
+            text-align: center;
+            padding: 90px 20px 20px;
+            gap: 20px;
+        }
+
+        /* Ajusta el tamaño del título en pantallas pequeñas */
+        .content h1 {
+            font-size: 1.8rem;
+        }
+        
+        /* Ajusta el tamaño del párrafo en pantallas pequeñas */
+        .content p {
+            font-size: 1.5rem;
+        }
+    }
+
+   /* Contenedor principal de la sección hero */
+   .hero {
+        display: flex; /* Usa flexbox para organizar los elementos */
+        flex-direction: column; /* Alinea los elementos verticalmente */
+        align-items: center; /* Centra los elementos horizontalmente */
+        justify-content: center; /* Centra los elementos verticalmente */
+        text-align: center; /* Centra el texto */
+        padding: 30px 55px 60px 55px; /* Aumenta la separación con la parte superior */
+    }
+
+    /* Estilos del título dentro de la sección hero */
+    .hero h1 {
+        font-size: 2.5rem; /* Tamaño del texto */
+        font-weight: bold; /* Hace que el texto sea negrita */
+        color: #1d1d1d; /* Color del texto */
+        margin-bottom: 10px; /* Espaciado debajo del título */
+    }
+
+    /* Estilos del párrafo dentro de la sección hero */
+    .hero p {
+        font-size: 1.2rem; /* Tamaño del texto */
+        color: #333; /* Color del texto */
+    }
+
+</style>
+
+<!-- Sección de presentación del producto -->
+<section class="product-showcase">
+    <!-- Contenedor del contenido textual -->
+    <div class="content">
+        <!-- <p class="animate__animated animate__backInLeft">ACTIPULSE <strong>PRO 2</strong></p> <!-- Título del producto -->
+        <p class="descripcion">
+            <strong>TECNOLOGÍA</strong> DE VANGUARDIA <strong> PARA <br> TU  CONSULTORIO</strong>
+        </p> <!-- Descripción del producto -->
+        <Popup/>
+    </div>
+    <!-- Video del producto -->
+    <video class="product-video" autoplay loop muted>
+        <source src="../../src/assets/pro2.webm" type="video/webm"> <!-- Reemplaza con la ruta de tu video -->
+        Tu navegador no soporta el elemento de video.
+    </video>
+</section>
+
+<!-- Sección de presentación del producto -->
+<section class="hero">
+    <h1 class="animate__animated animate__backInUp">Innovación para tu consultorio</h1>
+    <p class="descripcion">Descubre un <strong>dispositivo portátil</strong> que complemente tu consulta</p>
+</section>

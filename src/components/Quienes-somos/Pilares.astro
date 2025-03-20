@@ -1,0 +1,194 @@
+---
+import imagenPilares from '../../assets/Pilares.jpeg';
+---
+
+<style>
+    .pilares-section {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center; /* Centrar la sección */
+        max-width: 900px; /* Ajustar el ancho para que no se vea tan separada */
+        margin: 0 auto;
+        gap: 40px; /* Espacio entre el acordeón y la imagen */
+        padding: 40px 20px; /* Ajuste de espaciado */
+    }
+
+    .accordion-container {
+        width: 100%;
+        max-width: 350px;
+    }
+
+    .accordion {
+        width: 100%;
+    }
+
+    .accordion-item {
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        overflow: hidden;
+        margin-bottom: 10px;
+    }
+
+    .accordion-header {
+        background: #ddd;
+        color: black;
+        padding: 15px;
+        font-size: 0.8rem;
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        transition: background 0.3s;
+    }
+
+    .accordion-header:hover {
+        background: grey;
+    }
+
+    .accordion-content {
+        display: none;
+        padding: 15px;
+        background: white;
+        font-size: 0.8rem;
+        line-height: 1.5;
+    }
+
+    .accordion-content.open {
+        display: block;
+    }
+
+    .image-container {
+        max-width: 350px; /* Hacer que la imagen no sea más ancha que el acordeón */
+    }
+
+    .image-container img {
+        width: 100%;
+        border-radius: 8px;
+    }
+
+    .button-container {
+        text-align: center;
+        width: 100%;
+        margin-top: 15px;
+    }
+
+    .custom-button {
+        /* background: white; */
+        color: #007BFF;
+        border-color: #007BFF;
+        border: 1.5px solid #007BFF; /* Aquí defines el grosor y color del borde */
+        padding: 12px 24px;
+        font-size: 0.8rem;
+        text-decoration: none;
+        border-radius: 8px;
+        display: inline-block;
+        cursor: pointer;
+        transition: background 0.3s;
+    }
+
+    .custom-button:hover {
+        background: #0056b3;
+        color: white;
+    }
+
+    /* Adaptabilidad móvil */
+    @media (max-width: 768px) {
+        .pilares-section {
+            flex-direction: column;
+            text-align: center;
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .accordion-container,
+        .image-container {
+            max-width: 100%;
+        }
+    }
+</style>
+
+<section class="pilares-section">
+    <div class="accordion-container">
+        <div class="accordion">
+            <div class="accordion-item">
+                <div class="accordion-header" data-target="proposito">
+                    PROPÓSITO
+                </div>
+                <div class="accordion-content" id="proposito">
+                    <p>En Actipulse Neuroscience, nos centramos en
+                        mejorar la calidad de vida de las personas que
+                        enfrentan enfermedades neurológicas y
+                        psiquiátricas, investigando y generando soluciones
+                        transformadoras y efectivas, mejorando su bienestar
+                        a través de los profesionales de la salud.</p>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <div class="accordion-header" data-target="mision">
+                    MISIÓN
+                </div>
+                <div class="accordion-content" id="mision">
+                    <p>Desarrollar y ofrecer soluciones tecnológicas e
+                        innovadoras a los profesionales de la salud para
+                        mejorar la calidad de vida de las personas mediante
+                        tratamientos renovadores, accesibles, seguros y
+                        eficaces para trastornos neurológicos y mentales.
+                    </p>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <div class="accordion-header" data-target="vision">
+                    VISIÓN
+                </div>
+                <div class="accordion-content" id="vision">
+                    <p>Ser líderes en la transformación del tratamiento de
+                        enfermedades neurológicas y psiquiátricas en
+                        Latinoamérica para el 2030, mediante el desarrollo
+                        continuo de tecnologías disruptivas y avances
+                        científicos que redefinan los estándares de atención
+                        médica, permitiendo que más personas accedan a
+                        tratamientos que mejoren significativamente su
+                        bienestar a través de los profesionales de la salud,
+                        asegurando que cada uno de ellos cuente con uno
+                        de nuestros dispositivos en su consultorio.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="button-container">
+            <a href="#" class="custom-button">DESCUBRE CASOS DE ÉXITO</a>
+        </div>
+    </div>
+
+    <div class="image-container">
+        <img src={imagenPilares.src} alt="Evento de Pilares">
+    </div>
+</section>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const headers = document.querySelectorAll(".accordion-header");
+
+    headers.forEach((header) => {
+        header.addEventListener("click", function (event) {
+            const target = event.currentTarget as HTMLElement; // Especifica el tipo
+            const targetId = target.getAttribute("data-target");
+            const targetContent = document.getElementById(targetId!);
+
+            if (!targetContent) return;
+
+            // Cierra los otros abiertos antes de abrir el actual
+            document.querySelectorAll(".accordion-content").forEach(content => {
+                if (content !== targetContent) content.classList.remove("open");
+            });
+
+            targetContent.classList.toggle("open");
+        });
+    });
+});
+
+</script>

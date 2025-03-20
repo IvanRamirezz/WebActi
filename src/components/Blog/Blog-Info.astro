@@ -1,0 +1,201 @@
+---
+import Autor from '../../assets/Autor.png';
+import ArticleImage from '../../assets/Blog.png';
+import Slide from '../../assets/SlideShow.png';
+---
+<style>
+    .container {
+        display: flex;
+        flex-direction: row;
+        max-width: 1200px;
+        margin: 20px auto;
+        gap: 40px;
+        padding-top: 90px;
+        align-items: flex-start;
+    }
+
+    .author-section {
+        flex: 0.6;
+        background: white;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        text-align: center;
+    }
+
+    .author-section img {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        object-fit: cover;
+        margin-bottom: 10px;
+    }
+
+    .author-section h2 {
+        font-size: 20px;
+        margin: 5px 0;
+    }
+
+    .author-section p {
+        font-size: 14px;
+        color: #555;
+    }
+
+    .social-icons a {
+        margin: 10px;
+        text-decoration: none;
+        font-size: 18px;
+        color: #333;
+    }
+
+    .categories span {
+        display: inline-block;
+        background: #ddd;
+        padding: 5px 10px;
+        margin: 3px;
+        border-radius: 5px;
+        font-size: 12px;
+    }
+
+    .articles-section {
+        margin-top: 20px;
+        background: white;
+        padding: 20px;
+        border-radius: 8px;
+        /* box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); */
+  }
+
+    .article-item {
+        border-bottom: 1px solid #ddd;
+        padding: 10px 0;
+    }
+
+    .article-item a {
+        text-decoration: none;
+        color: #007BFF;
+        font-size: 16px;
+        display: block;
+    }
+
+    .article-item span {
+        font-size: 12px;
+        color: #666;
+    }
+
+    .sidebar {
+        flex: 2.4;
+        /* background: white; */
+        padding: 20px;
+        /* border-radius: 8px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); */
+        /* border-left: 2px solid #ddd; /* Borde izquierdo para separar */
+    }
+
+    .sidebar img {
+        width: 80%;
+        height: auto;
+        border-radius: 8px;
+        margin-bottom: 15px;
+    }
+
+    .sidebar h3 {
+        font-size: 18px;
+        margin-bottom: 5px;
+    }
+
+    .sidebar .article-info {
+        font-size: 14px;
+        color: #666;
+    }
+
+    /* Mejorar la separación entre los elementos */
+    .categories span {
+        background: #f0f0f0;
+        color: #333;
+    }
+
+    .article-item {
+        margin-bottom: 15px;
+    }
+
+    .article-info {
+        font-style: italic;
+    }
+
+    /* Ajustes de la separación y márgenes */
+    .sidebar hr {
+        margin: 20px 0;
+        border: 0;
+        /* border-top: 1px solid #ddd; */
+    }
+    @media (max-width: 768px) {
+    .author-section {
+        display: none;
+    }
+}
+</style>
+
+<div class="container">
+    <!-- <div class="author-section">
+        <img src={Autor.src} alt="Gabriel Villafuerte">
+        <h2>Gabriel Villafuerte Jimenez</h2>
+        <p>Director Científico</p>
+
+        <div class="social-icons">
+            <a href="#">📷</a>
+            <a href="#">𝕏</a>
+            <a href="#">🔗</a>
+        </div>
+
+        <div class="categories">
+            <span>Educación</span>
+            <span>Noticias</span>
+            <span>Neurociencia</span>
+            <span>Tecnología</span>
+            <span>Papers</span>
+            <span>Podcast</span>
+            <span>Video</span>
+        </div>
+
+        <div class="articles-section">
+            <h3>Últimos Artículos</h3>
+            <div class="article-item">
+                <a href="#">Estimulación magnética transcraneal y depresión</a>
+                <span>30/02/2025</span>
+            </div>
+            <div class="article-item">
+                <a href="#">ActiSesiones: Innovaciones en salud mental</a>
+                <span>30/02/2025</span>
+            </div>
+            <div class="article-item">
+                <a href="#">Ventajas del tratamiento con TMS</a>
+                <span>30/02/2025</span>
+            </div>
+        </div>
+    </div> -->
+
+    <div class="sidebar">
+        <!-- Artículo Destacado -->
+        <section class="article-highlight">
+            <img src={Slide.src} alt="Artículo Destacado">
+            <div class="categories">
+                <span>Neurociencia</span>
+                <span>Tecnología</span>
+            </div>
+            <h3>Impacto de la TMS en el tratamiento de la ansiedad</h3>
+            <p class="article-info">Por Gabriel Villafuerte - 30/02/2025</p>
+        </section>
+    
+        <!-- Segundo Artículo -->
+        <section class="article-second">
+            <img src={ArticleImage.src} alt="Segundo Artículo">
+            <div class="categories">
+                <span>Salud</span>
+                <span>Investigación</span>
+            </div>
+            <h3>Aplicaciones clínicas de la estimulación magnética transcraneal</h3>
+            <p class="article-info">Por Gabriel Villafuerte - 30/02/2025</p>
+        </section>
+    </div>
+    
+</div>

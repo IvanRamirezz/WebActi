@@ -1,0 +1,36 @@
+---
+import Navbar from '../components/Header.astro';
+import Layout from "../layouts/Layout.astro"
+import Footer from "../components/Footer.astro";
+import Header from "../components/Cursos-pres/Header.astro";
+import Certificacion from "../components/Cursos-pres/Certificacion.astro";
+import Video from "../components/Cursos-pres/Video.astro";
+import Ponentes from "../components/Cursos-pres/Ponentes.astro";
+import FAQ from "../components/Cursos-pres/FAQ.astro";
+import Profesionales from "../components/Profesionales.astro";
+---
+
+<html lang="en">
+<head>
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+	<meta charset="UTF-8">
+	<link rel="icon" type="image/svg+xml">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="generator" content= {Astro.generator}/>
+	<title>Cursos Presenciales</title>
+</head>
+<body>
+	<Navbar/>
+	<Layout/>
+	<Header/>
+	<Certificacion/>
+	<Video/>
+	<Ponentes/>
+	<Profesionales/>
+	<FAQ/>
+	<Footer/>
+</body>
+</html>

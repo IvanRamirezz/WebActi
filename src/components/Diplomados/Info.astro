@@ -1,0 +1,93 @@
+---
+import Image from '../../assets/Diplomado.jpeg'; // Ajusta la ruta de la imagen según tu proyecto
+---
+
+<style>
+  .webinar-section {
+    display: flex;
+    align-items: flex-start; /* Mantiene el texto alineado arriba */
+    justify-content: center; 
+    gap: 1rem; 
+    /* max-width: 800px; */
+    margin: 0 auto;
+    text-align: left;
+    padding: 10px 0; 
+    padding-bottom: 2%;
+    /* background-color: white; */
+  }
+  
+    .content {
+      flex: 1;
+      max-width: 430px;
+      text-align: left; /* Asegura que el texto esté alineado a la izquierda */
+    }
+  
+    p {
+      font-size: 1rem;
+      color: #333;
+      line-height: 1.4;
+      margin-bottom: 0.5rem; /* Menos espacio entre párrafos */
+      text-align: left; /* Justificación a la izquierda */
+    }
+  
+    .cta-button {
+      margin-top: 3%;
+      display: inline-block;
+      padding: 8px 16px;
+      border: 2px solid #00aaff;
+      color: #00aaff;
+      text-decoration: none;
+      border-radius: 5px;
+      font-weight: 600;
+      transition: 0.3s ease-in-out;
+    }
+  
+    .cta-button:hover {
+      background-color: #00aaff;
+      color: #fff;
+    }
+  
+    .image-container {
+    flex: 1;
+    max-width: 350px;
+    position: relative;
+    margin-top: 10px; /* Baja la imagen un poco */
+  }
+  
+    .image-container img {
+      width: 100%;
+      border-radius: 10px;
+      /* padding-left: 10%; */
+    }
+  
+    /* Responsividad */
+    @media (max-width: 768px) {
+      .webinar-section {
+        flex-direction: column;
+        padding: 5px 25px; /* Reduce padding */
+        gap: 1.3rem;
+      }
+  
+      .image-container {
+        order: -1;
+        max-width: 100%;
+      }
+      .cta-button{
+        margin-bottom: 5%;
+      }
+    }
+  </style>
+
+<section class="webinar-section">
+  <div class="content">
+    <p>
+        El Diplomado en Técnicas de Neuromodulación es un programa académico en modalidad en línea, avalado por la SEP y diseñado para
+        psicólogos y profesionales de la salud interesados en la aplicación de técnicas de neuromodulación no invasiva.  </p>
+    <p>
+        Este diplomado combina teoría y práctica, abarcando desde los principios básicos hasta las aplicaciones clínicas más avanzadas.</p>
+    <a href="https://wa.me/5529408085" class="cta-button">CONSULTAR FECHAS</a>
+  </div>
+  <div class="image-container">
+    <img src={Image.src} alt="Webinar sobre neuromodulación" />
+  </div>
+</section>

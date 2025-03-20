@@ -1,0 +1,84 @@
+---
+import Brain from '../../assets/Brain.jpeg';
+---
+
+<!-- Estilos para la sección de presentación del producto -->
+<style>
+    /* Contenedor principal de la sección */
+    .product-showcase {
+        display: flex; /* Usa flexbox para organizar los elementos */
+        align-items: center; /* Alinea verticalmente el contenido */
+        justify-content: center; /* Centra los elementos horizontalmente */
+        padding: 90px 40px 40px; /* Aumenta la separación con la parte superior */
+        gap: 60px; /* Aumenta la separación entre la imagen y el texto */
+        background-image: url('../../assets/Brain.jpeg');
+        background-size: cover; /* Ajusta la imagen al contenedor */
+        background-repeat: no-repeat; /* Evita repeticiones */
+    }
+    
+    /* Estilos para el contenedor del contenido textual */
+    .content {
+        max-width: 600px; /* Limita el ancho del contenido */
+        text-align: left; /* Alinea el texto a la izquierda */
+    }
+    
+    /* Estilos para el título */
+    .content h1 {
+        font-size: 2rem; /* Tamaño de la fuente */
+        color: white; /* Color del texto */
+    }
+    
+    /* Estilos para el botón de llamada a la acción */
+    .cta-button {
+        display: inline-block; /* Hace que el botón respete su contenido */
+        padding: 10px 20px; /* Añade relleno al botón */
+        border: 2px solid #007BFF; /* Define el borde con color azul */
+        color: #007BFF; /* Color del texto */
+        text-decoration: none; /* Elimina el subrayado del enlace */
+        font-weight: bold; /* Hace que el texto sea negrita */
+        border-radius: 5px; /* Redondea las esquinas del botón */
+        transition: background 0.3s; /* Agrega una transición suave al fondo */
+    }
+    
+    /* Cambio de color cuando el botón es pasado por encima */
+    .cta-button:hover {
+        background: #007BFF; /* Cambia el fondo a azul */
+        color: white; /* Cambia el color del texto a blanco */
+    }
+    
+    /* Estilos para la imagen del producto */
+    .product-image {
+        max-width: 450px; /* Limita el ancho de la imagen */
+        width: 100%; /* Permite que la imagen se ajuste al contenedor */
+        height: auto; /* Mantiene la proporción de la imagen */
+    }
+
+    /* Ajustes para pantallas más pequeñas */
+
+@media (max-width: 768px) {
+    .product-showcase {
+        flex-direction: column;
+        text-align: center;
+        padding: 40px 20px 20px;
+        gap: 20px;
+    }
+
+    /* Ajusta el tamaño del título en pantallas pequeñas */
+    .content h1 {
+        font-size: 2rem;
+    }
+    
+}
+</style>
+
+<!-- Sección de presentación del producto -->
+<section class="product-showcase">
+    <!-- Contenedor del contenido textual -->
+    <div class="content">
+        <h1>Detrás de la innovación conoce a ACTIPULSE</h1> <!-- Título del producto -->
+        <a href="#" class="cta-button">DESCUBRE NUESTRO DISPOSITIVO</a> <!-- Botón de llamada a la acción -->
+        <a href="#" class="cta-button">AGENDA UNA LLAMADA</a> <!-- Botón de llamada a la acción -->
+    </div>
+    <!-- Imagen del producto -->
+    <!-- <img src={Brain.src} alt="Actipulse Pro 2" class="product-image"> -->
+</section>

@@ -1,0 +1,125 @@
+---
+import Pro2 from '../../assets/PRODUCTO.png';
+import Anahuac from '../../assets/Anahuac.png';
+import Acti from '../../assets/Acti-ver.png'
+---
+
+ <style>
+    .certification-section {
+        width: 100%;
+        padding: 2rem;
+        /* padding-top: 700px; */
+        /* background: #f8f8f8; */
+        overflow: hidden; /* Evita desbordamientos */
+        box-sizing: border-box;
+    }
+  
+    .certification-container {
+        max-width: 900px;
+        width: 100%; /* Asegura que no supere el ancho */
+        margin: 0 auto;
+        text-align: left;
+    }
+  
+    .certification-box {
+        display: flex;
+        align-items: center;
+        background: white;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        padding: 1rem;
+        margin-bottom: 1rem;
+        box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+        width: 100%; /* Evita que sobrepase el contenedor */
+        box-sizing: border-box;
+    }
+  
+    .certification-box img {
+        width: 20%;
+        height: auto;
+        margin-right: 1rem;
+        max-width: 150px; /* Evita que la imagen sea demasiado grande */
+    }
+  
+    .certification-text {
+        flex-grow: 1;
+    }
+  
+    .certification-text h3 {
+        margin: 0;
+        font-size: 1.2rem;
+    }
+  
+    .certification-text p {
+        margin: 0.5rem 0;
+        font-size: 0.9rem;
+        color: #555;
+    }
+  
+    .certification-button {
+        background: transparent;
+        border: 1px solid #8a4fb5;
+        color: #8a4fb5;
+        padding: 0.5rem 1rem;
+        border-radius: 5px;
+        font-size: 0.9rem;
+        cursor: pointer;
+        white-space: nowrap; /* Evita que el texto del botón se rompa */
+    }
+  
+    .certification-button:hover {
+        background: #8a4fb5;
+        color: white;
+    }
+
+    /* 📱 Ajustes para móviles */
+    @media (max-width: 768px) {
+        .certification-box {
+            flex-direction: column;
+            text-align: left;
+            padding: 1.5rem;
+        }
+
+        .certification-box img {
+            width: 50%; /* Hace la imagen más grande en móviles */
+            margin: 0 auto 1rem;
+            max-width: 120px;
+        }
+
+        .certification-text {
+            text-align: left;
+        }
+
+        .certification-button {
+            width: 100%; /* Botón ocupa el ancho completo */
+            margin-top: 1rem;
+        }
+    }
+</style>
+
+  
+  <section class="certification-section">
+      <div class="certification-container">
+          <h2>Contamos con dos tipos de cursos:</h2>
+          <p>Con dos modalidades de certificación:</p>
+  
+          <div class="certification-box">
+              <img src={Anahuac.src} alt="Universidad Anáhuac">
+              <div class="certification-text">
+                  <h3>Avalados por la Universidad Anáhuac</h3>
+                  <p>Certificaciones con valor curricular otorgadas por una de las instituciones educativas más reconocidas de México.</p>
+              </div>
+              <button class="certification-button">MÁS INFORMACIÓN</button>
+          </div>
+  
+          <div class="certification-box">
+              <img src={Acti.src} alt="Actipulse Neuroscience">
+              <div class="certification-text">
+                  <h3>Masterclass por Actipulse Neuroscience</h3>
+                  <p>Cursos especializados en TMS y neuromodulación con certificación interna respaldada por nuestro equipo de investigación y desarrollo.</p>
+              </div>
+              <button class="certification-button">MÁS INFORMACIÓN</button>
+          </div>
+      </div>
+  </section>
+  

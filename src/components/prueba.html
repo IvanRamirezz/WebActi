@@ -1,0 +1,81 @@
+
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Montserrat', sans-serif;
+            color: black;
+            overflow-x: hidden;
+            transition: background 1s ease-in-out;
+            background-image: url('/src/assets/Background.png');
+            background-attachment: fixed; /* Fija la imagen de fondo */
+            background-size: cover; /* Asegura que la imagen cubra toda la pantalla */
+            background-position: center; /* Centra la imagen */
+        }
+        .container {
+            position: relative;
+            height: 250vh; /* Aumentamos la altura para permitir más espacio entre los textos */
+        }
+        .video-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+            transition: opacity 1s ease-in-out;
+        }
+        video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .text {
+            position: absolute;
+            width: 50%;
+            padding: 20px;
+            font-size: 2.5em;
+            opacity: 0;
+            transition: opacity 1s;
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+   }
+        .text-left { top: 60vh; left: 10%; text-align: left; }
+        .text-right { top: 130vh; right: 10%; text-align: right; } /* Movemos más abajo el segundo texto */
+        .text-bottom { bottom: 10vh; left: 50%; transform: translateX(-50%); text-align: center; }
+    </style>
+
+
+    <div class="video-container" id="videoContainer">
+        <video id="background-video" muted autoplay loop>
+            <source src="../assets/pro2.webm" type="video/webm">
+            Tu navegador no soporta el video.
+        </video>
+    </div>
+    <div class="container">
+        <div class="text text-left" id="text1"><strong>TECNOLOGÍA</strong> DE VANGUARDIA <strong> PARA TU  CONSULTORIO</strong></div>
+        <div class="text text-right" id="text2">Descubre un <strong>dispositivo portátil</strong> que complemente tu consulta</div>
+        <div class="text text-bottom" id="text3">ACTIPULSE PRO 2</div>
+    </div>
+    
+    <script>
+        const text1 = document.getElementById("text1");
+        const text2 = document.getElementById("text2");
+        const text3 = document.getElementById("text3");
+        const videoContainer = document.getElementById("videoContainer");
+
+        window.addEventListener("scroll", () => {
+            let scrollPercentage = window.scrollY / (document.body.scrollHeight - window.innerHeight);
+        
+            text1.style.opacity = scrollPercentage < 0.3 ? 1 : 0;
+            text2.style.opacity = (scrollPercentage >= 0.5 && scrollPercentage < 0.7) ? 1 : 0;
+            text3.style.opacity = scrollPercentage >= 0.8 ? 1 : 0;
+        
+            if (scrollPercentage >= 1.2) {
+                videoContainer.style.opacity = "0"; // Oculta el video
+            } else {
+                videoContainer.style.opacity = "1"; // Muestra el video
+            }
+        });
+        
+    </script>

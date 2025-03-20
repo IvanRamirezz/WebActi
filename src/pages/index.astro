@@ -1,0 +1,44 @@
+---
+import Navbar from '../components/Header.astro';
+import Layout from "../layouts/Layout.astro"
+import Footer from "../components/Footer.astro";
+import Dispositivo from "../components/Dispositivo.astro"
+import Beneficios from "../components/Beneficios.astro";
+import Caracteristicas from "../components/Caracteristicas.astro";
+import BeneficiosClinicos from "../components/BeneficiosClinicos.astro";
+import Detalles from "../components/Detalles.astro";
+import TextPatologias from "../components/TextPatologias.astro";
+import Textcenter from "../components/Textcenter.astro";
+import Prueba from "../components/prueba.astro";
+import Patologias from "../components/Patologias.astro";
+---
+
+
+<html lang="en">
+<head>
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+	<link href="css/hover.css" rel="stylesheet" media="all">
+	<meta charset="UTF-8">
+	<link rel="icon" type="image/svg+xml">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="generator" content= {Astro.generator}/>
+	<title>Productos</title>
+</head>
+<body>
+	<Navbar/>
+	<Layout/>
+	<!-- <Dispositivo/> -->
+	<Prueba/>
+	<Beneficios/>
+	<Detalles/>
+	<TextPatologias/> 
+	<Patologias/>
+	<Textcenter/> 
+	<Caracteristicas/>
+	<BeneficiosClinicos/>
+	<Footer/>
+</body>
+</html>

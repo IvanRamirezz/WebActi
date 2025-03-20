@@ -1,0 +1,147 @@
+---
+import Image from '../../assets/Pacientes.png'; // Ajusta la ruta de la imagen según tu proyecto
+import Esperar from '../../assets/Esperar.png';
+---
+
+<section class="expectations-section">
+    <div class="expectations-container">
+        <div class="text-content">
+            <h2>¿Qué puedes esperar?</h2>
+            <div class="expectations-grid">
+                <div class="expectation-item">
+                    <h3>Contenidos basados en las investigaciones más recientes</h3>
+                    <p>Enriquecidos con casos de éxito y testimoniales inspiradores.</p>
+                </div>
+                <div class="expectation-item">
+                    <h3>Experiencia práctica con tecnología de vanguardia</h3>
+                    <p>Respaldado por ejemplos reales de aplicación clínica.</p>
+                </div>
+                <div class="expectation-item full-width">
+                    <p>Espacios diseñados para fomentar el intercambio entre especialistas y ampliar tu red de contactos profesionales.</p>
+                </div>
+            </div>
+        </div>
+        <div class="image-content">
+            <img src={Esperar.src} alt="Experiencia en consulta">
+            <div class="play-button">
+                <span>▶</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    .expectations-section {
+        width: 100%;
+        padding: 1.5rem 2rem; /* Reducimos el padding vertical */
+        /* background: #f8f8f8; */
+        display: flex;
+        justify-content: center;
+        box-sizing: border-box;
+    }
+
+    .expectations-container {
+        max-width: 1100px;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        gap: 2rem;
+        box-sizing: border-box;
+    }
+
+    .text-content {
+        flex: 1;
+    }
+
+    .text-content h2 {
+        font-size: 2rem;
+        margin-bottom: 1rem;
+    }
+
+    .expectations-grid {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+    }
+
+    .expectation-item {
+        flex: 1 1 calc(50% - 1rem);
+    }
+
+    .expectation-item.full-width {
+        flex: 1 1 100%;
+    }
+
+    .expectation-item h3 {
+        font-size: 1.1rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .expectation-item p {
+        font-size: 0.9rem;
+        color: #555;
+    }
+
+    .image-content {
+        position: relative;
+        flex: 1;
+        max-width: 450px;
+    }
+
+    .image-content img {
+        width: 100%;
+        border-radius: 8px;
+        display: block;
+    }
+
+    .play-button {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: rgba(255, 255, 255, 0.8);
+        width: 60px;
+        height: 60px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        cursor: pointer;
+        font-size: 24px;
+        font-weight: bold;
+        color: #333;
+        transition: 0.3s;
+    }
+
+    .play-button:hover {
+        background: rgba(255, 255, 255, 1);
+    }
+
+    /* Adaptación a móviles */
+    @media (max-width: 768px) 
+        {
+        .expectations-container {
+            flex-direction: column;
+            text-align: left;
+            /* padding: 1rem; Reducimos aún más el padding */
+            padding: 0.2rem 1rem;
+
+        }
+        .expectations-section{
+            padding: 0.2rem 1rem;
+
+        }
+        .expectations-grid {
+            flex-direction: column;
+            gap: 0.2rem;
+        }
+
+        .expectation-item {
+            flex: 1 1 100%;
+        }
+
+        .image-content {
+            max-width: 100%;
+        }
+    }
+</style>

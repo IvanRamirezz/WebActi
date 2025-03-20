@@ -1,0 +1,82 @@
+---
+
+---
+
+  <style>
+.animated-text {
+    opacity: 0;
+    transform: translateX(-180px); /* Inicia desplazado a la izquierda */
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.animated-text.show {
+    opacity: 1;
+    transform: translateX(0); /* Se mueve a su posición original */
+}
+
+
+
+    /* Contenedor principal de la sección hero */
+    .hero {
+      display: flex; /* Usa flexbox para organizar los elementos */
+      flex-direction: column; /* Alinea los elementos verticalmente */
+      align-items: center; /* Centra los elementos horizontalmente */
+      justify-content: center; /* Centra los elementos verticalmente */
+      text-align: center; /* Centra el texto */
+      padding: 30px 55px 60px 55px; /* Espaciado con la parte superior */
+    }
+  
+    /* Estilos del título dentro de la sección hero */
+    .hero h2 {
+      font-size: 1.6rem; /* Tamaño del texto */
+      color: #1d1d1d; /* Color del texto */
+      margin: 10px 0; /* Espaciado arriba y abajo */
+    }
+    .hero p {
+      font-size: 1.8rem; /* Tamaño del texto */
+      color: #1d1d1d; /* Color del texto */
+      margin: 10px 0; /* Espaciado arriba y abajo */
+    }
+  
+    /* Líneas arriba y abajo del texto */
+    .line {
+      width: 100%; /* Ocupará todo el ancho disponible */
+      max-width: 100%; /* Por defecto, en pantallas pequeñas */
+      height: 1px; /* Grosor de la línea */
+      background-color: grey; /* Color gris */
+      margin: 25px 0; /* Espaciado con el texto */
+    }
+  
+    /* Cuando la pantalla sea mayor a 1200px, reducir el ancho de las líneas */
+    @media (min-width: 1300px) {
+      .line {
+        max-width: 65%;
+      }
+    }
+  </style>
+  
+  <!-- Sección de presentación del producto -->
+  <section class="hero">
+    <div class="line"></div> <!-- Línea superior -->
+    <p class="animated-text"> <strong>Tecnología avanzada</strong> que se ajusta a las <br> necesidades de <strong> tu consulta y tus pacientes</strong></p>
+    <div class="line"></div> <!-- Línea inferior -->
+  </section>
+
+  <script>
+document.addEventListener("DOMContentLoaded", function () {
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add("show"); // Muestra el elemento
+            } else {
+                entry.target.classList.remove("show"); // Lo oculta cuando sale
+            }
+        });
+    }, { threshold: 0.3 }); // Se activa cuando el 30% del elemento es visible
+
+    const textElement = document.querySelector(".animated-text");
+    observer.observe(textElement);
+});
+
+  </script>
+  

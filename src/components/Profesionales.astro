@@ -1,0 +1,224 @@
+---
+import GaboImage from '../assets/Gabo.jpeg'; // Ajusta la ruta según tu estructura de carpetas
+
+interface Professional {
+  name: string;
+  title: string;
+  specialty: string;
+  description: string;
+  image: string;
+  linkedin?: string;
+}
+
+const professionals: Professional[] = [
+  {
+    name: "Dr. Gabriel Villafuerte Jiménez",
+    title: "Médico e investigador en neurociencias",
+    specialty: "",
+    description: "Doctor en neurociencias, cofundador y director científico de Actipulse Neuroscience, donde desarrolla dispositivos médicos de estimulación cerebral no invasiva. Investiga la relación mente-cerebro y tratamientos neurológicos con estas técnicas.",
+    image: '/Gabo.jpeg',  // Usando la importación
+    linkedin: "#"
+  },
+  {
+    name: "Dra. Irina Vázquez Villaseñor",
+    title: "Especialista en neurociencias y técnicas avanzadas de neuromodulación",
+    specialty: "",
+    description: "Bioquímica Clínica por la Universidad de las Américas Puebla, con Maestría en Ciencias y Doctorado en Neurociencias por la Universidad de Sheffield. Con experiencia postdoctoral en el Sheffield Institute for Translational Neuroscience, especializada en daño neuronal e inflamación en enfermedades neurodegenerativas, enfocándose en demencias.",
+    image: "/Irina.jpeg",
+    linkedin: "#"
+  },
+  {
+    name: "Dr. César Romero Rebollar",
+    title: "Experto en investigación y aplicaciones clínicas en salud mental",
+    specialty: "",
+    description: "Doctor en Neurociencias de la Conducta por la UNAM y Clinical Scientist en Actipulse Neuroscience. Especialista en neuroimagen, neurocognición y estimulación magnética transcraneal. Miembro del SNI Nivel 1, con 12 años de experiencia docente en neurociencias y metodología.",
+    image: "/Cesar.jpeg",
+    linkedin: "#"
+  },
+  {
+    name: "Psic. Diana Luna Umanzor",
+    title: "Psicóloga con experiencia en neuropsicología y rehabilitación cognitiva",
+    specialty: "",
+    description: "Investigó en neuroinmunología y plasticidad neural, obteniendo un doctorado en neurociencias. Es cofundador y director científico de Actipulse Neuroscience, donde desarrolla dispositivos médicos y tratamientos neurológicos con estimulación cerebral no invasiva.",
+    image: "/Diana.jpeg",
+    linkedin: "#"
+  }
+];
+---
+
+<section class="professionals-grid">
+  {
+    professionals.map((prof) => (
+      <div class="card">
+        <div class="card-front">
+          <img src={prof.image} alt={prof.name} />
+          <h3>{prof.name}</h3>
+          <p class="title">{prof.title}</p>
+          <p class="specialty">{prof.specialty}</p>
+        </div>
+        <div class="card-back">
+          <h3>{prof.name}</h3>
+          <p class="description">{prof.description}</p>
+          {prof.linkedin && (
+            <a href={prof.linkedin} class="linkedin-link" target="_blank" rel="noopener noreferrer">
+              <img src="/linkedin.png" alt="linkedin" width="24" height="24" />
+            </a>
+          )}
+        </div>
+      </div>
+    ))
+  }
+</section>
+<div class="bottom-title">
+  <h2>EL APRENDIZAJE PRESENCIAL MARCA LA DIFERENCIA</h2>
+</div>
+
+<style>
+  .professionals-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(180px, 300px));
+    gap: 6rem;
+    padding: 3rem;
+    max-width: 900px;
+    margin: 0 auto 2rem;
+    /* margin: 2rem auto; */
+    justify-content: center;
+  }
+
+  .bottom-title {
+    background: white;
+    padding: 1.5rem 2rem;
+    border-radius: 12px;
+    max-width: 800px;
+    margin: 2rem auto;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  .bottom-title h2 {
+    margin: 0;
+    color: #333;
+    font-size: 1.8rem;
+  }
+
+  .card {
+    position: relative;
+    height: 320px;
+    perspective: 1000px;
+    cursor: pointer;
+  }
+
+  .card-front img {
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 1rem;
+  }
+
+  .card-front,
+  .card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    transition: transform 0.6s;
+    padding: 1.5rem;
+    border-radius: 12px;
+    background: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  .card-front {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+
+  .card-back {
+    transform: rotateY(180deg);
+    overflow-y: auto;
+    padding: 2rem;
+  }
+
+  .card:hover .card-front {
+    transform: rotateY(180deg);
+  }
+
+  .card:hover .card-back {
+    transform: rotateY(0);
+  }
+
+  h3 {
+    color: #333;
+    margin: 0.5rem 0;
+    font-size: 1.2rem;
+  }
+
+  .title,
+  .specialty {
+    color: #666;
+    margin: 0.25rem 0;
+    font-size: 1rem;
+  }
+
+  .description {
+    color: #444;
+    font-size: 0.9rem;
+    line-height: 1.6;
+  }
+
+  .linkedin-link {
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
+  }
+
+  /* @media (max-width: 900px) {
+    .professionals-grid {
+      grid-template-columns: minmax(250px, 400px);
+      padding: 1rem;
+    }
+  } */
+  @media (max-width: 768px) {
+    .professionals-grid {
+      grid-template-columns: minmax(150px, 230px);
+      gap: 6rem;
+      padding: 1.5rem;
+    }
+
+    .card {
+      height: 260px;
+    }
+
+    .card-front img {
+      width: 100px;
+      height: 100px;
+    }
+
+    .bottom-title {
+      margin: 1rem;
+      padding: 1rem;
+    }
+
+    .bottom-title h2 {
+      font-size: 1.3rem;
+    }
+  }
+</style>
+
+<script>
+  // Mobile touch handling
+  const cards = document.querySelectorAll('.card');
+  
+  cards.forEach(card => {
+    card.addEventListener('click', () => {
+      if (window.innerWidth <= 768) {
+        cards.forEach(c => c.classList.remove('active'));
+        card.classList.toggle('active');
+      }
+    });
+  });
+</script>

@@ -1,0 +1,150 @@
+---
+import uno from '../assets/01.png';
+import dos from '../assets/02.png';
+import tres from '../assets/03.png';
+import bobina from '../assets/Bobinas.png';
+import alison from '../assets/alison.png';
+import gorro from '../assets/gorro.png';
+---
+
+<!-- Styles del titulo centrado -->
+  <style>
+    .animated-title-dispo {
+    opacity: 0;
+    transform: translateX(100px); /* Inicia desplazado a la izquierda */
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.animated-title-dispo.show {
+    opacity: 1;
+    transform: translateX(0); /* Se mueve a su posición original */
+}
+
+    
+    /* Contenedor principal de la sección hero */
+    .hero {
+      display: flex; /* Usa flexbox para organizar los elementos */
+      flex-direction: column; /* Alinea los elementos verticalmente */
+      align-items: center; /* Centra los elementos horizontalmente */
+      justify-content: center; /* Centra los elementos verticalmente */
+      text-align: center; /* Centra el texto */
+      padding: 60px 55px 30px 55px; /* Espaciado con la parte superior */
+    }
+  
+    /* Estilos del título dentro de la sección hero */
+    .hero h2 {
+      font-size: 1.6rem; /* Tamaño del texto */
+      color: #1d1d1d; /* Color del texto */
+      margin: 10px 0; /* Espaciado arriba y abajo */
+    }
+    .hero p {
+      font-size: 1.8rem; /* Tamaño del texto */
+      color: #1d1d1d; /* Color del texto */
+      margin: 10px 0; /* Espaciado arriba y abajo */
+    }
+  
+    /* Líneas arriba y abajo del texto */
+    .line {
+      width: 100%; /* Ocupará todo el ancho disponible */
+      max-width: 100%; /* Por defecto, en pantallas pequeñas */
+      height: 1px; /* Grosor de la línea */
+      background-color: grey; /* Color gris */
+      margin: 25px 0; /* Espaciado con el texto */
+    }
+  
+    /* Cuando la pantalla sea mayor a 1200px, reducir el ancho de las líneas */
+    @media (min-width: 1300px) {
+      .line {
+        max-width: 65%;
+      }
+    }
+  </style>
+  
+  <!-- Sección de presentación del producto -->
+  <section class="hero">
+    <div class="line"></div> <!-- Línea superior -->
+    <p class="animated-title-dispo"> Un <strong>dispositivo</strong> de TMS <strong> avalado por la ciencia 
+        <br> +90,000 sesiones aplicadas.</strong></p>
+    <div class="line"></div> <!-- Línea inferior -->
+  </section>
+  
+  <style>
+    .container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: justify;
+
+      width: 100%;
+      max-width: 80%; /* Controla el ancho */
+      margin: auto;
+      /* padding: 10px; */
+      /* gap: 20px; */
+    }
+  
+    .content {
+      flex: 1;
+      max-width: 50%;
+    }
+  
+    .video-tms {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+    }
+  
+    video {
+      max-width: 100%;
+      height: auto;
+      /* border-radius: 10px; */
+    }
+  
+    @media (max-width: 768px) {
+      .container {
+        flex-direction: column;
+        height: auto; /* Ajusta en móviles */
+        text-align: center;
+        padding: 20px;
+      }
+  
+      .content, .video-tms {
+        max-width: 100%;
+      }
+    }
+  </style>
+  
+  <section class="container">
+    <div class="video-tms">
+        <video autoplay loop muted>
+          <source src="/tms.webm" type="video/webm"> 
+          Tu navegador no soporta videos.
+        </video>
+    </div>
+    <div class="content">
+      <h2>01</h2>
+      <p>La bobina genera pulsos magnéticos precisos que estimulan las áreas específicas del cerebro.</p>
+      <h2>02</h2>
+      <p>El dispositivo es el centro de control que permite personalizar los protocolos y ajustar los parámetros de la terapia TMS.</p>
+      <h2>03</h2>
+      <p>El gorro de estimulación ayuda a localizar y fijar con precisión las áreas del cerebro que serán estimuladas.</p>
+    </div>
+  </section>
+  
+<!-- Script de la animacion del title -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("show"); // Muestra el elemento
+                } else {
+                    entry.target.classList.remove("show"); // Lo oculta cuando sale
+                }
+            });
+        }, { threshold: 0.3 }); // Se activa cuando el 30% del elemento es visible
+    
+        const textElement = document.querySelector(".animated-title-dispo");
+        observer.observe(textElement);
+    });
+    
+</script>

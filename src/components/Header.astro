@@ -1,0 +1,274 @@
+---
+import logo from "../assets/black_logo.png";
+const menuItems = [
+  { name: 'Home', link: '/' },
+  { name: 'Productos', link: '/' },
+  // { name: 'Investigación', link: '/Blog/' },
+  { name: 'Educación continua', link: '/Webinars/', submenu: [
+    { name: 'Webinars', link: '/Webinars/' },
+    { name: 'Cursos', link: '/Cursos/' },
+    { name: 'Diplomados', link: '/Diplomados/' },
+  ]},
+  { name: 'Quiénes somos', link: '/Quienes/' },
+];
+
+---
+
+<header class="header">
+  <div class="container">
+    <nav>
+      <a href="/" class="logo">
+        <img src={logo.src} alt="Actipulse Neuroscience" />
+      </a>
+
+      <!-- Botón hamburguesa para móviles -->
+      <button class="menu-toggle">
+        ☰
+      </button>
+
+      <!-- Menú de navegación -->
+      <ul class="nav-links">
+        {menuItems.map(item => (
+          <li class={`nav-item ${item.submenu ? 'dropdown' : ''}`}>
+            <a href={item.link} class="nav-link">
+              {item.name}
+            </a>
+            {item.submenu && (
+              <ul class="submenu">
+                {item.submenu.map(subitem => (
+                  <li><a href={subitem.link}>{subitem.name}</a></li>
+                ))}
+              </ul>
+            )}
+          </li>
+        ))}
+      </ul>
+
+      <!-- Botón de inicio de sesión -->
+      <a href="/#contacto" class="btn-cta">LOG IN</a>
+
+      <!-- Barra de búsqueda -->
+      <form class="search-container" action="//llamaswill.tumblr.com/search">
+        <input id="search-box" type="text" class="search-box" name="q" placeholder="" />
+        <label for="search-box"><span class="search-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" width="24" height="24" stroke-width="2">
+            <path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0"></path>
+            <path d="M21 21l-6 -6"></path>
+          </svg></span></label>
+        <input type="submit" id="search-submit" />
+      </form>
+    </nav>
+  </div>
+</header>
+
+<style>
+  /* Estilos base */
+.header {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 100;
+  backdrop-filter: blur(10px);
+  padding: 10px 20px;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 70px;
+}
+
+/* Logo */
+.logo img {
+  height: 40px;
+}
+
+/* Menú de navegación */
+.nav-links {
+  display: flex;
+  gap: 1.5rem;
+  list-style: none;
+}
+
+.nav-links li {
+  position: relative;
+}
+
+.nav-links li a {
+  color: black;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.nav-links li a:hover {
+  color: var(--color-primary);
+}
+
+/* Submenú */
+.submenu {
+  width: 100%;
+  display: none;
+  position: absolute;
+  top: 100%; /* Aumentamos el valor para que se muestre más abajo */
+  left: 0;
+  background-color: rgba(184, 182, 182, 0.067); /* Fondo con transparencia */
+  list-style: none;
+  padding: 0;
+  border: 1px solid #ccc;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 5px; /* Agregamos un borde redondeado para mayor suavidad */
+}
+
+.submenu li a {
+  display: block;
+  padding: 10px 20px;
+  color: black; /* Color de texto blanco para mejor contraste con el fondo oscuro */
+  text-decoration: none;
+  /* transition: background-color 0.3s ease; */
+}
+
+.submenu li a:hover {
+  /* background-color: var(--color-primary); */
+  background-color: rgba(0, 0, 0, 0.677);
+  color: #ffffff;
+  transition: background-color 0.3s ease-in-out;
+  border-radius: 5px; /* Agregamos un borde redondeado para mayor suavidad */
+}
+
+.nav-item:hover .submenu {
+  display: block;
+}
+
+/* Botón de menú hamburguesa */
+.menu-toggle {
+  display: none;
+  font-size: 24px;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+/* Barra de búsqueda */
+.search-container {
+  display: flex;
+  align-items: center;
+  position: relative;
+  border-radius: 20px;
+  padding: 5px 12px;
+  transition: all 0.3s ease-in-out;
+}
+
+.search-box {
+  width: 40px;
+  height: 40px;
+  border-radius: 200px;
+  border: none;
+  cursor: pointer;
+  background: transparent;
+  background-color: black;
+  transition: width 0.6s, border-radius 0.6s, background 0.6s, box-shadow 0.6s;
+}
+
+.search-box:focus {
+  width: 250px;
+  padding-left: 15px;
+  background: black;
+  border-radius: 80px;
+  cursor: text;
+  outline: none;
+  color: white;
+}
+
+.search-icon {
+  position: absolute;
+  right: 15px;
+  font-size: 18px;
+  color: white;
+  cursor: pointer;
+  transition: color 0.3s ease-in-out;
+  bottom: 7px;
+  right: 24px;
+}
+
+#search-submit {
+  position: absolute;
+  left: -9999px;
+}
+
+.btn-cta {
+  background-color: #404a4f;
+  padding: 0.7rem 1.2rem;
+  border-radius: 8px;
+  font-weight: 100;
+  text-decoration: none;
+  color: white;
+  transition: background-color 0.3s ease, transform 0.2s ease-in-out;
+  border: 1px solid white;
+}
+
+.btn-cta:hover {
+  background-color: #4f5c62;
+  transform: scale(1.05);
+}
+
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+    color: #000;
+  }
+
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #000;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    z-index: 99;
+  }
+
+  .nav-links.open {
+    display: flex;
+  }
+
+  .nav-links li a {
+    color: #ffffff;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+  }
+
+  .btn-cta {
+    display: none;
+  }
+
+  .nav-links .btn-cta {
+    display: block;
+    width: 80%;
+    text-align: center;
+    margin-top: 1rem;
+    background-color: #404a4f;
+    border: 1px solid white;
+    border-radius: 8px;
+    padding: 0.7rem 1.2rem;
+  }
+
+  .search-container {
+    display: none;
+  }
+}
+</style>
+

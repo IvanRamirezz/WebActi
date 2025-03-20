@@ -1,0 +1,217 @@
+---
+import MediPro2 from '../assets/Beneficios-medico.jpeg';
+import Pacientes from '../assets/Pacientes.jpeg'
+import Popup from '../components/Popup.astro';
+---
+
+<!-- Estilos de beneficios seccion -->
+<style>
+    .benefits-image{
+    opacity: 0;
+    transform: translateX(-180px); /* Inicia desplazado a la izquierda */
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    }
+
+    .benefits-image.show{
+    opacity: 1;
+    transform: translateX(0); /* Se mueve a su posición original */
+    }
+
+    .benefits-image2 {
+    opacity: 0;
+    transform: translateX(180px); /* Inicia desplazado a la izquierda */
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    }
+
+    .benefits-image2.show {
+    opacity: 1;
+    transform: translateX(0); /* Se mueve a su posición original */
+    }
+        /* Estilos para el botón de llamada a la acción */
+        .cta-button {
+        display: inline-block; /* Hace que el botón respete su contenido */
+        padding: 10px 20px; /* Añade relleno al botón */
+        border: 2px solid #ffffff; /* Define el borde con color azul */
+        color: #ffffff; /* Color del texto */
+        text-decoration: none; /* Elimina el subrayado del enlace */
+        font-weight: bold; /* Hace que el texto sea negrita */
+        border-radius: 5px; /* Redondea las esquinas del botón */
+        transition: background 0.3s; /* Agrega una transición suave al fondo */
+        }
+    
+    /* Cambio de color cuando el botón es pasado por encima */
+    .cta-button:hover {
+        background: white; /* Cambia el fondo a azul */
+        color: black; /* Cambia el color del texto a blanco */
+    }
+    /* Contenedor principal de la sección */
+    .benefits-section {
+        display: flex; /* Usa flexbox para organizar los elementos */
+        align-items: center; /* Alinea verticalmente el contenido */
+        justify-content: center; /* Centra los elementos horizontalmente */
+        padding: 70px 40px 40px; /* Aumenta la separación con la parte superior */
+        gap: 60px; /* Aumenta la separación entre la imagen y el texto */
+        background-color: #263840; /* Fondo azul oscuro como el anterior */
+        color: #ffffff; /* Color del texto para contrastar con el fondo */
+    }
+    
+    /* Estilos para el contenedor del contenido textual */
+    .benefits-content {
+        max-width: 600px; /* Limita el ancho del contenido */
+        text-align: left; /* Alinea el texto a la izquierda */
+    }
+    
+    /* Estilos para el título */
+    .benefits-content h1 {
+        font-size: 2.5rem; /* Tamaño de la fuente */
+        color: #ffffff; /* Color del texto blanco */
+    }
+
+    /* Estilos para la lista de beneficios */
+    .benefits-list {
+        list-style: none; /* Elimina los marcadores de lista predeterminados */
+        padding: 0;
+    }
+
+    /* Estilos para la lista */
+    .benefits-list li {
+    display: flex;
+    align-items: flex-start; /* Alinea la imagen con la parte superior del texto */
+    gap: 10px; /* Espacio entre la imagen y el texto */
+    margin-bottom: 15px; /* Espaciado entre elementos de la lista */
+}
+
+    .benefits-list li::before {
+        content: "";
+        display: inline-block;
+        width: 24px;
+        height: 24px;
+        background-image: url('/src/assets/flecha.png');
+        background-size: contain;
+        background-repeat: no-repeat;
+        flex-shrink: 0; /* Evita que la imagen se reduzca */
+    }
+
+    .benefits-list li span {
+        text-align: justify; /* Justifica el texto */
+        display: block; /* Asegura que el texto ocupe toda la línea */
+    }
+
+
+    /* Estilo para la imagen */
+    .benefits-image,  .benefits-image2{
+        max-width: 350px;
+        height: auto;
+        border-radius: 8px;
+    }
+    /* Ajustes para pantallas más pequeñas */
+    @media (max-width: 768px) {
+    /* Sección de beneficios */
+    .benefits-section {
+        flex-direction: column;
+        text-align: center;
+        padding: 40px 20px;
+        gap: 20px;
+    }
+
+    /* Ajusta el ancho del contenido para adaptarlo a pantallas pequeñas */
+    .benefits-content {
+        max-width: 100%;
+        text-align: center;
+    }
+
+    .benefits-content h1 {
+        font-size: 2rem;
+    }
+
+    .benefits-list {
+        padding: 0;
+    }
+
+    .benefits-list li {
+        font-size: 1rem;
+        justify-content: center;
+    }
+
+    .benefits-list li::before {
+        width: 20px;
+        height: 20px;
+        margin-right: 8px;
+    }
+
+    .benefits-image,  .benefits-image2{
+        max-width: 90%;
+        height: auto;
+    }
+    }
+</style>
+
+
+<!-- Sección de beneficios -->
+<section class="benefits-section">
+    <!-- Contenedor del contenido textual -->
+    <div class="benefits-content">
+        <h1>Beneficios para tu consulta</h1> <!-- Título -->
+        <ul class="benefits-list">
+            <li><span>Posiciona tu consultorio como líder en innovación tecnológica</span></li>
+            <li><span>Diferencia tu práctica con una ventaja competitiva frente a otros profesionales de la salud</span></li>
+            <li><span>Proporciona un tratamiento integral y complementario para tus pacientes.</span></li>
+        </ul>   
+        <Popup/>     
+        <!-- <a href="#" class="cta-button">IMPLEMENTAR EN MI CONSULTORIO</a> Botón de llamada a la acción -->
+    </div>
+    <!-- Imagen del producto -->
+    <img src={MediPro2.src} alt="Actipulse Pro 2" class="benefits-image">
+</section>
+
+<!-- Sección de beneficios para pacientes-->
+<section class="benefits-section">
+        <!-- Contenedor del contenido textual -->
+        <div class="benefits-content">
+            <h1>Beneficios para tus pacientes</h1> <!-- Título -->
+            <ul class="benefits-list">
+                <li><span>Experimentan una alternativa indolora y sin efectos adversos significativos</span></li> <!-- Descripción del producto -->
+                <li><span>Acceden a una solución eficaz para trastornos resistentes a medicamentos.</span></li> <!-- Descripción del producto -->
+                <li><span>Se benefician de una terapia tecnológica que complementa su tratamiento actual para mejorar su calidad de vida.</span></li> <!-- Descripción del producto -->
+            </ul>
+            <a href="#" class="cta-button">SOY PACIENTE</a> <!-- Botón de llamada a la acción -->
+        </div>
+                <!-- Imagen del producto -->
+                <img src={Pacientes.src} alt="Actipulse Pro 2" class="benefits-image2">
+</section>
+
+<!-- Script para animacion imagen -->
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("show"); // Muestra el elemento
+                } else {
+                    entry.target.classList.remove("show"); // Lo oculta cuando sale
+                }
+            });
+        }, { threshold: 0.6 }); // Se activa cuando el 30% del elemento es visible
+    
+        const textElement = document.querySelector(".benefits-image");
+        observer.observe(textElement);
+    });
+</script>
+
+<!-- Script para animacion imagen -->
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("show"); // Muestra el elemento
+                } else {
+                    entry.target.classList.remove("show"); // Lo oculta cuando sale
+                }
+            });
+        }, { threshold: 0.5 }); // Se activa cuando el 30% del elemento es visible
+    
+        const textElement = document.querySelector(".benefits-image2");
+        observer.observe(textElement);
+    });
+</script>

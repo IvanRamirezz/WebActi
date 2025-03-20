@@ -1,0 +1,110 @@
+---
+
+---
+
+<style>
+    .curso-container {
+        position: relative;
+        width: 100%;
+        min-height: 400px;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        background: url('../../assets/Section.jpeg') no-repeat center/cover;
+        background-size: cover;
+    }
+
+    /* Primera parte blanca en desktop */
+    .curso-container::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 40%;
+        height: 100%;
+        background: white;
+        z-index: 1;
+    }
+
+    /* Segunda parte con difuminado */
+    .curso-container::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 40%;
+        width: 60%;
+        height: 100%;
+        background: linear-gradient(to right, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0));
+        z-index: 1;
+    }
+
+    .curso-content {
+        position: relative;
+        z-index: 2;
+        width: 50%;
+        padding: 5rem;
+    }
+
+    h2 {
+        margin-bottom: 0.5rem;
+    }
+
+    h1 {
+        margin-bottom: 1rem;
+    }
+
+    /* ---- Estilos para móviles ---- */
+    @media (max-width: 768px) {
+        .curso-container {
+            flex-direction: column;
+            text-align: left;
+            min-height: auto;
+            width: 100%; /* Asegura que se adapte al ancho */
+            padding: 0;
+            overflow: hidden; /* Evita que se desborde */
+            background: none; /* Elimina el fondo general */
+        }
+
+        .curso-container::before,
+        .curso-container::after {
+            display: none; /* Elimina los efectos de desktop */
+        }
+
+        .curso-image {
+            width: 100%;
+            height: 250px;
+            background: url('../../assets/Section.png') no-repeat center/cover;
+            position: relative;
+        }
+
+        /* Capa difuminada entre la imagen y el texto */
+        .curso-image::after {
+            content: ""; 
+            position: absolute;
+            right: 0%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to top, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0));
+        }
+
+        .curso-content {
+            width: 100%;
+            padding: 2rem;
+            background: white; /* Fondo blanco para el contenido */
+            box-sizing: border-box;
+        }
+    }
+</style>
+
+<section class="curso-container">
+    <div class="curso-image"></div> <!-- Imagen en la parte superior en móviles -->
+    <div class="curso-content">
+        <!-- <h2>Diplomados</h2> -->
+        <h1>Diplomado en Técnicas de Neuromodulación</h1>
+        <p>
+            Un programa integral para profesionales de la salud interesados en transformar su práctica clínica con conocimientos avanzados en neuromodulación.  </p>
+    </div>
+</section>
+
+
+

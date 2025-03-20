@@ -1,0 +1,74 @@
+---
+import Image from '../../assets/Acti-Innova.jpeg'; // Ajusta la ruta de la imagen según tu proyecto
+---
+
+<style>
+  .webinar-section {
+    display: flex;
+    align-items: flex-start; /* Mantiene el texto alineado arriba */
+    justify-content: center; 
+    gap: 1.5rem; 
+    /* max-width: 800px; */
+    margin: 0 auto;
+    text-align: left;
+    padding: 20px 0; 
+    padding-bottom: 2%;
+    /* background-color: white; */
+  }
+  
+    .content {
+      flex: 1;
+      max-width: 430px;
+      text-align: left; /* Asegura que el texto esté alineado a la izquierda */
+    }
+  
+    p {
+      font-size: 1rem;
+      color: #333;
+      line-height: 1.4;
+      margin-bottom: 0.5rem; /* Menos espacio entre párrafos */
+      text-align: left; /* Justificación a la izquierda */
+    }
+  
+    .image-container {
+    flex: 1;
+    max-width: 350px;
+    position: relative;
+    margin-top: 20px; /* Baja la imagen un poco */
+  }
+  
+    .image-container img {
+      width: 100%;
+      border-radius: 10px;
+      /* padding-left: 10%; */
+    }
+  
+    /* Responsividad */
+    @media (max-width: 768px) {
+      .webinar-section {
+        flex-direction: column;
+        padding: 5px 25px; /* Reduce padding */
+        gap: 1.3rem;
+      }
+  
+      .image-container {
+        order: -1;
+        max-width: 100%;
+      }
+    }
+  </style>
+
+<section class="webinar-section">
+  <div class="content">
+    <h2>
+        En ACTIPULSE Neuroscience, transformamos la investigación en soluciones tangibles. 
+    </h2>
+    <p>
+        Nuestro enfoque combina ciencia, tecnología y un compromiso ético para abordar trastornos mentales de manera no invasiva y eficaz a través de los profesionales de la salud mental. 
+    </p>
+    <!-- <a href="#" class="cta-button">CONSULTAR FECHAS</a> -->
+  </div>
+  <div class="image-container">
+    <img src={Image.src} alt="Webinar sobre neuromodulación" />
+  </div>
+</section>

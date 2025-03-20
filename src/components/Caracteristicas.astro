@@ -1,0 +1,475 @@
+---
+import dispo from '../assets/dispo.png';
+import product from '../assets/PRODUCTO.png';
+import product_btn from '../assets/product-btn.png';
+import dispo_lateral from '../assets/dispo-lateral.png';
+---
+
+<!-- Styles del producto -->
+<style>
+    * {
+        font-family: 'Montserrat', sans-serif;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    .product-container {
+        display: flex;
+        flex-wrap: wrap;
+        max-width: 900px;
+        padding: 20px;
+        margin: auto;
+        background: transparent;
+    }
+
+    .product-gallery {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        flex: 1;
+        position: relative;
+    }
+
+    .thumbnail-container {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .thumbnail {
+        width: 80px;
+        height: 80px;
+        cursor: pointer;
+        border: 2px solid transparent;
+        transition: 0.3s;
+        border-radius: 8px;
+    }
+
+    .thumbnail:hover {
+        border: 2px solid #007bff;
+    }
+
+    .image-wrapper {
+        position: relative;
+    }
+
+    .main-image {
+        width: 350px;
+        height: auto;
+        border-radius: 10px;
+        cursor: zoom-in;
+    }
+
+    /* Efecto de Zoom */
+    .zoom-lens {
+        position: absolute;
+        width: 100px;
+        height: 100px;
+        border: 2px solid #007bff;
+        background: rgba(255, 255, 255, 0.5);
+        display: none;
+        pointer-events: none;
+        border-radius: 50%;
+    }
+
+    .zoom-result {
+        position: absolute;
+        top: 0;
+        left: 370px;
+        width: 200px;
+        height: 200px;
+        background-repeat: no-repeat;
+        background-size: 700px;
+        border: 2px solid #007bff;
+        display: none;
+        border-radius: 10px;
+        overflow: hidden;
+    }
+
+    .product-info {
+        flex: 1;
+        padding: 20px;
+    }
+
+    .product-title {
+        font-size: 28px;
+        font-weight: bold;
+        color: #333;
+    }
+
+    .product-description {
+        font-size: 20px;
+        /* color: #666; */
+        line-height: 1.4;
+        max-width: 400px;
+        padding-top: 10px;
+    }
+
+    .buy-button {
+        display: inline-block;
+        background: transparent;
+        color: black;
+        padding: 10px 15px;
+        text-decoration: none;
+        font-size: 16px;
+        border-radius: 5px;
+        margin-top: 15px;
+        transition: 0.3s;
+        border-width: 1px;
+        border-style: solid;
+        border-color: black;
+    }
+
+    .buy-button:hover {
+        background: black;
+        color: white;
+    }
+
+    /* Diseño responsive */
+    @media (max-width: 768px) {
+        .product-container {
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .product-gallery {
+            flex-direction: row;
+            align-items: flex-start;
+        }
+
+        .thumbnail-container {
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .thumbnail {
+            width: 60px;
+            height: 60px;
+        }
+
+        .main-image {
+            width: 240px;
+        }
+
+        .product-info {
+            padding: 10px;
+            text-align: justify;
+        }
+
+        .zoom-result {
+            display: none !important;
+        }
+    }
+</style>
+
+<!-- Styles de acordeón -->
+<style>
+
+
+    details summary {
+    font-weight: normal;
+    font-size: 17px;
+    padding: 2px;
+}
+
+.container {
+    padding: 30px;
+    display: flex;
+    justify-content: center;
+    max-width: 900px;
+    margin: auto;
+    flex-direction: row; /* Asegura que los elementos estén en fila por defecto */
+}
+
+.text-section {
+    flex: 1;
+}
+
+.accordion {
+    max-width: 90%;
+}
+
+details p {
+    text-align: justify;
+}
+
+details {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    padding: 10px;
+    background: transparent;
+}
+
+summary {
+    font-weight: bold;
+    cursor: pointer;
+}
+
+details[open] {
+    /* background: transparent; */
+    background: #6c6a6a37;
+}
+
+.image-section {
+    flex: 1;
+    text-align: center;
+}
+
+.image-section img {
+    max-width: 80%;
+    /* border-radius: 10px; */
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    padding-right: 28%;
+}
+
+/* Ajustes para pantallas más pequeñas */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column; /* Cambia la dirección a columna para pantallas pequeñas */
+        padding: 10px; /* Añade algo de espacio alrededor */
+    }
+
+    .image-section {
+        margin-bottom: 20px;
+    }
+
+    .accordion {
+        max-width: 80%; /* Hace que el acordeón ocupe el 100% del ancho disponible */
+        margin: 0 auto; /* Centra el acordeón */
+    }
+
+    h2 {
+        font-size: 22px; /* Reduce el tamaño del título en pantallas pequeñas */
+        padding: 2%; /* Elimina el espacio extra a la derecha */
+    }
+}
+
+</style>
+
+<!-- Styles del titulo -->
+<style>
+    /* .animated-title {
+    opacity: 0;
+    transform: translateY(90px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  } */
+
+    .animated-title.show {
+    opacity: 1;
+    transform: translateY(0);
+    } 
+  /* Contenedor principal de la sección hero */
+  .hero {
+    display: flex; /* Usa flexbox para organizar los elementos */
+    flex-direction: column; /* Alinea los elementos verticalmente */
+    align-items: center; /* Centra los elementos horizontalmente */
+    justify-content: center; /* Centra los elementos verticalmente */
+    text-align: center; /* Centra el texto */
+    padding: 40px 55px 40px 55px; /* Espaciado con la parte superior */
+  }
+
+  /* Estilos del título dentro de la sección hero */
+  .hero h2 {
+    font-size: 1.6rem; /* Tamaño del texto */
+    color: #1d1d1d; /* Color del texto */
+    margin: 10px 0; /* Espaciado arriba y abajo */
+  }
+  .hero p {
+    font-size: 1.8rem; /* Tamaño del texto */
+    color: #1d1d1d; /* Color del texto */
+    margin: 10px 0; /* Espaciado arriba y abajo */
+  }
+
+  /* Líneas arriba y abajo del texto */
+  .line {
+    width: 100%; /* Ocupará todo el ancho disponible */
+    max-width: 100%; /* Por defecto, en pantallas pequeñas */
+    height: 1px; /* Grosor de la línea */
+    background-color: grey; /* Color gris */
+    margin: 25px 0; /* Espaciado con el texto */
+  }
+
+  /* Cuando la pantalla sea mayor a 1200px, reducir el ancho de las líneas */
+  @media (min-width: 1300px) {
+    .line {
+      max-width: 65%;
+    }
+  }
+</style>
+
+<!-- Sección de presentación del producto -->
+<!-- <section class="hero">
+  <div class="line"></div> 
+  <p class="animated-title">Descubre la <strong> innovación </strong> </p>
+  <div class="line"></div> 
+</section> -->
+
+<!-- Título principal -->
+<h2>Diseñado para ofrecer resultados óptimos<br>  desde el primer uso</h2>
+
+<!-- Contenedor que incluye el acordeón y la imagen -->
+<div class="container">
+      <!-- Sección de la imagen -->
+<!-- Section del producto -->
+<section class="product-container">
+    <!-- Galería de imágenes -->
+    <section class="product-gallery">
+        <section class="thumbnail-container">
+            <img src={dispo.src} class="thumbnail" onclick="changeImage(this)">
+            <img src={product.src} class="thumbnail" onclick="changeImage(this)">
+            <img src={product_btn.src} class="thumbnail" onclick="changeImage(this)">
+            <!-- <img src={dispo_lateral.src} class="thumbnail" onclick="changeImage(this)"> -->
+        </section>
+
+        <section class="image-wrapper">
+            <!-- Imagen principal -->
+            <img id="mainImage" src={dispo.src}class="main-image">
+            <section id="zoomLens" class="zoom-lens"></section>
+            <section id="zoomResult" class="zoom-result"></section>
+        </section>
+    </section>
+
+    <!-- Información del producto
+    <section class="product-info">
+        <section class="product-title">Actipulse PRO 2</section>
+        <section class="product-description">
+            El Actipulse Pro 2 es un dispositivo de estimulación magnética diseñado 
+            para mejorar el bienestar neurológico. Su tecnología avanzada permite un 
+            tratamiento preciso y efectivo.
+        </section>
+        <section>
+            <a href="#" class="buy-button">Adquirir Ahora</a>
+        </section>
+    </section> -->
+
+</section>
+    <!-- Sección de texto (acordeón) -->
+    <div class="text-section">
+        <div class="accordion">
+            <!-- Detalles del acordeón: cada "details" es una sección con un "summary" y un contenido adicional -->
+            <details>
+                <summary>15 protocolos precargados</summary>
+                <p>Comienza de inmediato con configuraciones diseñadas 
+                  para distintas necesidades y objetivos.
+                </p>
+            </details>
+            <details>
+                <summary>Posibilidad de personalización</summary>
+                <p>Puedes registrar y personalizar la historia de cada uno de tus pacientes.
+                </p>
+            </details>
+            <details>
+                <summary>            Frecuencia de estimulación de 1 a 540 Hz: </summary>
+                <p>Un rango amplio y adaptable, 
+                    perfecto para múltiples aplicaciones.   </p>
+            </details>
+
+            <details>
+                <summary>Intensidad máxima de 10,000 miligauss</summary>
+                <p>Potencia constante que asegura la eficacia de cada sesión.
+                </p>
+            </details>
+
+            <details>
+              <summary>32 GB de almacenamiento</summary>
+              <p>Guarda nombre de pacientes, configuraciones y resultados de manera segura.
+              </p>
+          </details>
+        </div>
+    </div>
+
+</div>
+
+<!-- Script del producto -->
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const mainImage = document.getElementById("mainImage") as HTMLImageElement | null;
+        const zoomLens = document.getElementById("zoomLens") as HTMLDivElement | null;
+        const zoomResult = document.getElementById("zoomResult") as HTMLDivElement | null;
+
+        if (mainImage && zoomResult) {
+            // Inicializar la imagen de fondo del zoomResult
+            zoomResult.style.backgroundImage = `url(${mainImage.src})`;
+
+            document.querySelectorAll(".thumbnail").forEach((thumbnail) => {
+                thumbnail.addEventListener("click", function (this: HTMLImageElement) {
+                    if (mainImage && zoomResult) {
+                        mainImage.src = this.src;
+                        zoomResult.style.backgroundImage = `url(${this.src})`; // Actualiza el zoom
+                    }
+                });
+            });
+
+            if (zoomLens && zoomResult) {
+                mainImage.addEventListener("mousemove", (e) => zoomEffect(e, mainImage, zoomLens, zoomResult));
+                mainImage.addEventListener("mouseenter", () => {
+                    zoomLens.style.display = "block";
+                    zoomResult.style.display = "block";
+                });
+                mainImage.addEventListener("mouseleave", () => {
+                    zoomLens.style.display = "none";
+                    zoomResult.style.display = "none";
+                });
+            }
+        }
+
+        function zoomEffect(event: MouseEvent, img: HTMLImageElement, lens: HTMLDivElement, result: HTMLDivElement) {
+            const { left, top, width, height } = img.getBoundingClientRect();
+            const lensSize = 100;
+            let x = event.pageX - left - window.scrollX - lensSize / 2;
+            let y = event.pageY - top - window.scrollY - lensSize / 2;
+
+            x = Math.max(0, Math.min(x, width - lensSize));
+            y = Math.max(0, Math.min(y, height - lensSize));
+
+            lens.style.left = `${x}px`;
+            lens.style.top = `${y}px`;
+
+            const zoomFactor = 2; // Factor de zoom ajustable
+            result.style.backgroundPosition = `-${x * zoomFactor}px -${y * zoomFactor}px`;
+            result.style.backgroundSize = `${width * zoomFactor}px ${height * zoomFactor}px`;
+        }
+    });
+</script>
+
+
+<!-- Script del acordeon -->
+<script>
+    document.querySelectorAll('details').forEach((detail) => {
+    detail.addEventListener('click', () => {
+        // Cierra todos los detalles antes de abrir el nuevo
+        document.querySelectorAll('details').forEach((otherDetail) => {
+            if (otherDetail !== detail) {
+                otherDetail.removeAttribute('open');
+            }
+        });
+    });
+});
+
+</script>
+
+
+<!-- <script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("show"); // Muestra el elemento
+                } else {
+                    entry.target.classList.remove("show"); // Lo oculta cuando sale
+                }
+            });
+        }, { threshold: 0.3 }); // Se activa cuando el 30% del elemento es visible
+    
+        const textElement = document.querySelector(".animated-title");
+        observer.observe(textElement);
+    });
+    
+  </script> -->
